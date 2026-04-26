@@ -1,7 +1,6 @@
 {
   "name": "orion-creator-studio",
   "version": "1.0.0",
-  "description": "Orion — Built for creators who mean it.",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0"
   }
