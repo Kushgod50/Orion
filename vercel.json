@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orion — Built for creators who mean it.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0C0C0C;
+  --surface:#1A1A1A;
+  --card:#222222;
+  --card2:#2A2A2A;
+  --gold:#D4AF6A;
+  --gold2:#F0D99A;
+  --gold-dim:rgba(212,175,106,0.1);
+  --gold-dim2:rgba(212,175,106,0.06);
+  --text:#F5F5F5;
+  --text2:rgba(245,245,245,0.55);
+  --text3:rgba(245,245,245,0.28);
+  --border:rgba(212,175,106,0.12);
+  --border2:rgba(212,175,106,0.25);
+  --red:#E8705F;
+  --fd:'Cormorant Garamond',serif;
+  --fb:'DM Sans',sans-serif;
+  --r:8px;
+  --rl:12px;
+}
+
+body { background:var(--void); color:var(--text); font-family:var(--fb); min-height:100vh; }
+
+/* ── NAV ─────────────────────────────── */
+nav {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.9rem 2rem; border-bottom:1px solid var(--border);
+  position:sticky; top:0; background:rgba(12,12,12,0.96);
+  backdrop-filter:blur(16px); z-index:100;
+}
+.logo { display:flex; align-items:center; gap:10px; }
+.logo-wordmark { font-family:var(--fd); font-size:22px; font-weight:600; letter-spacing:0.5px; color:var(--text); }
+.logo-wordmark span { color:var(--gold); }
+.logo-tagline { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--text3); margin-top:2px; }
+.plan-row { display:flex; gap:5px; }
+.pbtn {
+  font-size:10px; padding:4px 13px; border-radius:20px;
+  border:1px solid var(--border); color:var(--text2);
+  background:none; cursor:pointer; font-family:var(--fb);
+  letter-spacing:.3px; transition:all .2s;
+}
+.pbtn.on { background:var(--gold-dim); border-color:var(--gold); color:var(--gold); }
+
+/* ── MAIN ────────────────────────────── */
+.main { max-width:800px; margin:0 auto; padding:2rem 1.5rem 5rem; }
+
+/* ── SETUP ───────────────────────────── */
+.setup {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--rl); padding:1.4rem; margin-bottom:1.1rem;
+}
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+.field label {
+  display:block; font-size:9px; text-transform:uppercase;
+  letter-spacing:1.8px; color:var(--text3); margin-bottom:5px; font-weight:500;
+}
+.field input, .field select, .field textarea {
+  width:100%; padding:9px 12px; border-radius:var(--r);
+  border:1px solid var(--border); background:var(--card);
+  color:var(--text); font-family:var(--fb); font-size:13px;
+  outline:none; transition:border-color .2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color:rgba(212,175,106,.45); }
+.field input::placeholder, .field textarea::placeholder { color:var(--text3); }
+.field select option { background:var(--card); }
+.field textarea { resize:vertical; min-height:62px; }
+
+.pills { display:flex; gap:6px; flex-wrap:wrap; margin-top:4px; }
+.pill {
+  font-size:11px; padding:5px 13px; border-radius:20px;
+  border:1px solid var(--border); color:var(--text2);
+  cursor:pointer; background:none; font-family:var(--fb); transition:all .15s;
+}
+.pill.on { background:var(--gold-dim); border-color:var(--gold); color:var(--gold); }
+
+/* ── TABS ────────────────────────────── */
+.tabs {
+  display:flex; gap:3px; background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--r);
+  padding:3px; margin-bottom:1.1rem;
+}
+.tab {
+  flex:1; padding:9px; border-radius:6px; font-size:12px;
+  cursor:pointer; border:none; background:none; color:var(--text2);
+  font-family:var(--fb); letter-spacing:.3px; transition:all .18s;
+}
+.tab.on { background:var(--card2); color:var(--gold); border:1px solid var(--border); }
+
+/* ── QTY ─────────────────────────────── */
+.qty-note { font-size:10px; color:var(--text3); margin-bottom:7px; letter-spacing:.3px; }
+.qty-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:.9rem; }
+.qbtn {
+  padding:6px 17px; border-radius:var(--r); border:1px solid var(--border);
+  background:var(--card); color:var(--text2); font-size:12px;
+  cursor:pointer; font-family:var(--fb); transition:all .15s;
+}
+.qbtn.on { background:var(--gold-dim); border-color:var(--gold); color:var(--gold); }
+.qbtn.locked { opacity:.3; cursor:not-allowed; }
+
+/* ── BUTTONS ─────────────────────────── */
+.gbtn {
+  width:100%; padding:12px; border-radius:var(--r);
+  background:var(--gold-dim); color:var(--gold); font-size:13px;
+  font-weight:500; border:1px solid var(--gold); cursor:pointer;
+  font-family:var(--fd); letter-spacing:.8px; transition:all .15s;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.gbtn:hover:not(:disabled) { background:var(--gold); color:var(--void); }
+.gbtn:disabled { opacity:.35; cursor:not-allowed; }
+
+/* ── RESULTS ─────────────────────────── */
+.results { margin-top:1.1rem; }
+.rlabel {
+  font-size:9px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--text3); margin-bottom:10px;
+}
+.idea-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r); padding:.85rem 1rem; margin-bottom:6px;
+  cursor:pointer; transition:all .18s; display:flex;
+  align-items:flex-start; gap:10px;
+}
+.idea-card:hover { border-color:var(--border2); background:var(--card); }
+.idea-card.sel { border-color:rgba(212,175,106,.4); background:var(--gold-dim2); }
+.inum {
+  min-width:24px; height:24px; border-radius:50%; background:var(--card2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; color:var(--text3); flex-shrink:0; border:1px solid var(--border);
+}
+.idea-card.sel .inum { border-color:var(--gold); color:var(--gold); }
+.ibody { flex:1; }
+.ititle { font-size:14px; font-weight:500; margin-bottom:3px; line-height:1.4; font-family:var(--fd); letter-spacing:.2px; }
+.ihook { font-size:11px; color:var(--text2); margin-bottom:6px; line-height:1.5; }
+.chips { display:flex; gap:4px; flex-wrap:wrap; }
+.chip {
+  font-size:9px; padding:2px 7px; border-radius:20px;
+  background:var(--card2); border:1px solid var(--border);
+  color:var(--text3); letter-spacing:.3px;
+}
+.chip.g { background:var(--gold-dim); border-color:rgba(212,175,106,.3); color:var(--gold); }
+.icheck { font-size:14px; color:var(--gold); opacity:0; transition:opacity .15s; flex-shrink:0; }
+.idea-card.sel .icheck { opacity:1; }
+
+/* ── SEO ─────────────────────────────── */
+.seo-block {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r); padding:.9rem 1.1rem; margin-bottom:7px;
+}
+.sb-label { font-size:9px; text-transform:uppercase; letter-spacing:1.8px; color:var(--text3); margin-bottom:8px; }
+.seo-row {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--r);
+  padding:8px 11px; margin-bottom:4px; font-size:12px; cursor:pointer;
+  transition:border-color .15s; display:flex; justify-content:space-between;
+  align-items:center; gap:8px; color:var(--text);
+}
+.seo-row:hover { border-color:var(--border2); }
+.charcount { font-size:9px; color:var(--text3); flex-shrink:0; }
+.desc-box {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--r);
+  padding:10px 12px; font-size:12px; line-height:1.75;
+  color:var(--text2); white-space:pre-wrap; word-break:break-word;
+}
+.tag-cloud { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:7px; }
+.tag {
+  font-size:10px; padding:3px 9px; border-radius:20px;
+  background:var(--card); border:1px solid var(--border); color:var(--text2);
+}
+.cpbtn {
+  font-size:10px; padding:5px 12px; border-radius:var(--r);
+  border:1px solid var(--border); background:none; color:var(--text2);
+  cursor:pointer; font-family:var(--fb); transition:all .15s; letter-spacing:.3px;
+}
+.cpbtn:hover { border-color:var(--gold); color:var(--gold); }
+.insight {
+  background:var(--gold-dim2); border:1px solid rgba(212,175,106,.2);
+  border-radius:var(--r); padding:10px 13px; font-size:13px;
+  color:var(--gold2); line-height:1.6; margin-top:6px;
+  font-family:var(--fd); letter-spacing:.2px;
+}
+
+/* ── PAYWALL ─────────────────────────── */
+.paywall {
+  background:var(--gold-dim2); border:1px solid rgba(212,175,106,.15);
+  border-radius:var(--rl); padding:2rem; text-align:center;
+}
+.pw-title { font-family:var(--fd); font-size:22px; font-weight:600; color:var(--gold2); letter-spacing:.5px; margin-bottom:.4rem; }
+.pw-sub { font-size:12px; color:var(--text2); margin-bottom:1.25rem; line-height:1.7; max-width:420px; margin-left:auto; margin-right:auto; }
+.pw-btns { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.pw-up {
+  padding:10px 24px; border-radius:var(--r); background:var(--gold);
+  color:var(--void); border:none; font-size:12px; font-weight:500;
+  cursor:pointer; font-family:var(--fd); letter-spacing:.5px; transition:opacity .15s;
+}
+.pw-up:hover { opacity:.85; }
+.pw-skip {
+  padding:10px 24px; border-radius:var(--r); background:none;
+  color:var(--text2); border:1px solid var(--border); font-size:12px;
+  cursor:pointer; font-family:var(--fb);
+}
+
+/* ── THUMBNAIL ───────────────────────── */
+.drop-zone {
+  border:1px dashed var(--border2); border-radius:var(--rl);
+  padding:2.25rem; text-align:center; cursor:pointer;
+  transition:all .2s; position:relative; margin-bottom:11px;
+}
+.drop-zone:hover { border-color:var(--gold); background:var(--gold-dim2); }
+.drop-zone input { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+#tpreview { max-width:100%; border-radius:var(--r); margin-bottom:11px; display:none; }
+.score-summary {
+  display:flex; align-items:center; gap:1rem;
+  background:var(--card); border-radius:var(--r);
+  padding:1rem; margin-bottom:.9rem; border:1px solid var(--border);
+}
+.score-big { text-align:center; min-width:64px; }
+.score-num { font-family:var(--fd); font-size:44px; font-weight:600; color:var(--gold); line-height:1; }
+.score-lbl { font-size:9px; color:var(--text3); text-transform:uppercase; letter-spacing:1.5px; margin-top:2px; }
+.score-sum-text {
+  font-size:12px; color:var(--text2); line-height:1.65;
+  border-left:1px solid var(--border); padding-left:1rem;
+  font-family:var(--fd); letter-spacing:.2px;
+}
+.score-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:10px; }
+.score-card { background:var(--card); border-radius:var(--r); padding:.85rem; border:1px solid var(--border); }
+.sc-label { font-size:9px; color:var(--text3); margin-bottom:4px; letter-spacing:.5px; text-transform:uppercase; }
+.sc-val { font-size:22px; font-weight:500; font-family:var(--fd); margin-bottom:5px; color:var(--gold); }
+.bar-bg { height:2px; background:var(--border); border-radius:2px; }
+.bar-fill { height:100%; border-radius:2px; background:var(--gold); transition:width .6s ease; }
+.fb-card {
+  border-left:1px solid; padding:9px 12px; margin-bottom:5px;
+  background:var(--card); border-radius:0 var(--r) var(--r) 0;
+}
+.fb-card.good { border-color:var(--gold); }
+.fb-card.warn { border-color:rgba(212,175,106,.35); }
+.fb-card.bad { border-color:rgba(245,245,245,.15); }
+.fb-label { font-size:9px; text-transform:uppercase; letter-spacing:1.2px; color:var(--gold); margin-bottom:3px; }
+.fb-card.warn .fb-label, .fb-card.bad .fb-label { color:var(--text3); }
+.fb-text { font-size:11px; color:var(--text2); line-height:1.5; }
+
+/* ── MISC ────────────────────────────── */
+.divider { border:none; border-top:1px solid var(--border); margin:1.1rem 0; }
+.hint { font-size:10px; color:var(--text3); text-align:center; margin-top:7px; letter-spacing:.3px; }
+.spinner {
+  display:inline-block; width:12px; height:12px;
+  border:1.5px solid rgba(212,175,106,.25); border-top-color:var(--gold);
+  border-radius:50%; animation:spin .7s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.hidden { display:none !important; }
+.err {
+  color:var(--red); font-size:12px; padding:.6rem .9rem;
+  background:rgba(232,112,95,.06); border-radius:var(--r);
+  border:1px solid rgba(232,112,95,.2); line-height:1.5;
+}
+.fade { animation:fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg width="30" height="30" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="4"  r="2.5" fill="#D4AF6A"/>
+      <circle cx="4"  cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+      <circle cx="24" cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+      <circle cx="8"  cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+      <circle cx="20" cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+      <line x1="14" y1="4"  x2="4"  y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+      <line x1="14" y1="4"  x2="24" y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+      <line x1="4"  y1="13" x2="8"  y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+      <line x1="24" y1="13" x2="20" y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+    </svg>
+    <div>
+      <div class="logo-wordmark">Ori<span>on</span></div>
+      <div class="logo-tagline">Built for creators who mean it.</div>
+    </div>
+  </div>
+  <div class="plan-row">
+    <button class="pbtn on" data-p="free"    onclick="setPlan('free')">Free</button>
+    <button class="pbtn"    data-p="basic"   onclick="setPlan('basic')">Basic</button>
+    <button class="pbtn"    data-p="premium" onclick="setPlan('premium')">Premium</button>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- SETUP -->
+  <div class="setup">
+    <div class="frow">
+      <div class="field">
+        <label>Your niche</label>
+        <input id="niche" placeholder="e.g. Personal Finance, Gaming, Fitness..." />
+      </div>
+      <div class="field">
+        <label>Sub-topic (optional)</label>
+        <input id="sub" placeholder="e.g. budgeting for beginners..." />
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Platform</label>
+      <div class="pills">
+        <button class="pill on" onclick="pickPill(this)">YouTube</button>
+        <button class="pill" onclick="pickPill(this)">TikTok</button>
+        <button class="pill" onclick="pickPill(this)">Instagram Reels</button>
+        <button class="pill" onclick="pickPill(this)">Podcast</button>
+        <button class="pill" onclick="pickPill(this)">Shorts</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Goal / context (optional)</label>
+      <textarea id="goal" placeholder="e.g. grow to 10k subscribers, post weekly, appeal to beginners..."></textarea>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab on" onclick="showTab('ideas',this)">&#10022; Video Ideas</button>
+    <button class="tab"    onclick="showTab('seo',this)">&#8593; SEO Titles &amp; Tags</button>
+    <button class="tab"    onclick="showTab('thumb',this)">&#9670; Thumbnail AI</button>
+  </div>
+
+  <!-- IDEAS -->
+  <div id="tab-ideas">
+    <div class="qty-note" id="ideas-note">Free — 1 idea included. Upgrade to unlock more.</div>
+    <div class="qty-row" id="ideas-qty">
+      <button class="qbtn on" data-q="1"  onclick="pickQty(this,'ideas')">1 — Free</button>
+      <button class="qbtn"    data-q="5"  onclick="pickQty(this,'ideas')">5</button>
+      <button class="qbtn locked" data-q="10" onclick="pickQty(this,'ideas')">10</button>
+      <button class="qbtn locked" data-q="20" onclick="pickQty(this,'ideas')">20</button>
+      <button class="qbtn locked" data-q="50" onclick="pickQty(this,'ideas')">50</button>
+    </div>
+    <button class="gbtn" id="ideas-btn" onclick="genIdeas()">Generate Ideas</button>
+    <div class="results" id="ideas-results"></div>
+  </div>
+
+  <!-- SEO -->
+  <div id="tab-seo" class="hidden">
+    <div class="field" style="margin-bottom:12px">
+      <label>Video topic — or select an idea above</label>
+      <input id="seo-topic" placeholder="e.g. How I saved $10,000 in one year on a $40k salary" />
+    </div>
+    <div class="qty-note" id="seo-note">Free — 1 title option included.</div>
+    <div class="qty-row" id="seo-qty">
+      <button class="qbtn on" data-q="1"  onclick="pickQty(this,'seo')">1 — Free</button>
+      <button class="qbtn"    data-q="5"  onclick="pickQty(this,'seo')">5</button>
+      <button class="qbtn locked" data-q="10" onclick="pickQty(this,'seo')">10</button>
+      <button class="qbtn locked" data-q="20" onclick="pickQty(this,'seo')">20</button>
+    </div>
+    <button class="gbtn" id="seo-btn" onclick="genSEO()">Generate SEO Package</button>
+    <div class="results" id="seo-results"></div>
+  </div>
+
+  <!-- THUMBNAIL -->
+  <div id="tab-thumb" class="hidden">
+    <div id="thumb-gate">
+      <div class="paywall">
+        <svg width="36" height="36" viewBox="0 0 28 28" fill="none" style="margin-bottom:.75rem">
+          <circle cx="14" cy="4"  r="2.5" fill="#D4AF6A"/>
+          <circle cx="4"  cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+          <circle cx="24" cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+          <circle cx="8"  cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+          <circle cx="20" cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+          <line x1="14" y1="4"  x2="4"  y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+          <line x1="14" y1="4"  x2="24" y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+          <line x1="4"  y1="13" x2="8"  y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+          <line x1="24" y1="13" x2="20" y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+        </svg>
+        <div class="pw-title">Thumbnail AI</div>
+        <div class="pw-sub">Upload your thumbnail and receive a detailed AI critique — scored on contrast, text readability, emotional impact, and mobile clarity. Exclusive to Orion Premium.</div>
+        <div class="pw-btns">
+          <button class="pw-up" onclick="setPlan('premium')">Unlock Premium</button>
+          <button class="pw-skip" onclick="showTab('ideas',document.querySelector('.tab'))">Back to Ideas</button>
+        </div>
+      </div>
+    </div>
+    <div id="thumb-tool" class="hidden">
+      <div class="drop-zone" id="drop-zone">
+        <input type="file" id="tfile" accept="image/*" onchange="loadThumb(event)" />
+        <div style="font-size:13px;color:var(--text2);margin-bottom:4px">Drop your thumbnail here or click to upload</div>
+        <div style="font-size:10px;color:var(--text3)">PNG &middot; JPG &middot; 1280&times;720 recommended</div>
+      </div>
+      <img id="tpreview" alt="Thumbnail preview" />
+      <button class="gbtn" id="thumb-btn" onclick="analyzeThumb()" disabled>Analyze Thumbnail</button>
+      <div id="thumb-results" class="results"></div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ── STATE ──────────────────────────────────────────────────────────────────
+let plan = 'free', ideasQty = 1, seoQty = 1, thumbB64 = null;
+
+const access = {
+  ideas: { free:[1], basic:[1,5,10], premium:[1,5,10,20,50] },
+  seo:   { free:[1], basic:[1,5,10], premium:[1,5,10,20] }
+};
+
+// ── PLAN ───────────────────────────────────────────────────────────────────
+function setPlan(p) {
+  plan = p;
+  document.querySelectorAll('.pbtn').forEach(b => b.classList.toggle('on', b.dataset.p === p));
+  refreshLocks('ideas');
+  refreshLocks('seo');
+  const n = {
+    free:    'Free — 1 idea included. Upgrade to unlock more.',
+    basic:   'Basic — up to 10 ideas. Upgrade for 50.',
+    premium: 'Premium — all quantities unlocked.'
+  };
+  document.getElementById('ideas-note').textContent = n[p];
+  const sn = {
+    free:    'Free — 1 title option included.',
+    basic:   'Basic — up to 10 title options.',
+    premium: 'Premium — up to 20 title options.'
+  };
+  document.getElementById('seo-note').textContent = sn[p];
+  if (p === 'premium') {
+    document.getElementById('thumb-gate').classList.add('hidden');
+    document.getElementById('thumb-tool').classList.remove('hidden');
+  } else {
+    document.getElementById('thumb-gate').classList.remove('hidden');
+    document.getElementById('thumb-tool').classList.add('hidden');
+  }
+}
+
+function refreshLocks(type) {
+  const allowed = access[type][plan];
+  document.querySelectorAll(`#${type}-qty .qbtn`).forEach(b => {
+    b.classList.toggle('locked', !allowed.includes(parseInt(b.dataset.q)));
+  });
+}
+
+// ── PILLS / TABS / QTY ─────────────────────────────────────────────────────
+function pickPill(el) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+}
+function getPlatform() {
+  return document.querySelector('.pill.on')?.textContent || 'YouTube';
+}
+function pickQty(btn, type) {
+  const q = parseInt(btn.dataset.q);
+  if (!access[type][plan].includes(q)) {
+    alert('Upgrade your Orion plan to unlock ' + q + ' ' + (type === 'ideas' ? 'ideas' : 'titles') + '.');
+    return;
+  }
+  document.querySelectorAll(`#${type}-qty .qbtn`).forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (type === 'ideas') ideasQty = q;
+  else seoQty = q;
+}
+function showTab(t, el) {
+  ['ideas','seo','thumb'].forEach(x => {
+    document.getElementById('tab-' + x).classList.toggle('hidden', x !== t);
+  });
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.querySelector(`.tab[onclick*="${t}"]`).classList.add('on');
+}
+function setBtn(id, loading, label) {
+  const b = document.getElementById(id);
+  b.disabled = loading;
+  b.innerHTML = loading ? '<span class="spinner"></span> Working...' : label;
+}
+
+// ── API ─────────────────────────────────────────────────────────────────────
+// Calls YOUR Vercel backend — the API key lives there, never in the browser
+async function callAPI(body) {
+  const res = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) throw new Error(json.error || 'Request failed');
+  return json.data;
+}
+
+// ── IDEAS ───────────────────────────────────────────────────────────────────
+async function genIdeas() {
+  const niche = document.getElementById('niche').value.trim();
+  if (!niche) { alert('Please enter your niche first.'); return; }
+  setBtn('ideas-btn', true, 'Generate Ideas');
+  document.getElementById('ideas-results').innerHTML = '';
+  try {
+    const data = await callAPI({
+      type: 'ideas',
+      niche,
+      subtopic: document.getElementById('sub').value.trim(),
+      goal:     document.getElementById('goal').value.trim(),
+      platform: getPlatform(),
+      qty:      ideasQty
+    });
+    renderIdeas(data.ideas, niche);
+  } catch(e) {
+    document.getElementById('ideas-results').innerHTML =
+      '<div class="err">Error: ' + e.message + '</div>';
+  }
+  setBtn('ideas-btn', false, 'Generate Ideas');
+}
+
+function renderIdeas(ideas, niche) {
+  const d = document.getElementById('ideas-results');
+  d.innerHTML =
+    '<div class="rlabel">' + ideas.length + ' idea' + (ideas.length > 1 ? 's' : '') + ' for "' + niche + '"</div>' +
+    ideas.map((idea, i) => `
+      <div class="idea-card fade" onclick="pickIdea(this, ${JSON.stringify(JSON.stringify(idea.title))})">
+        <div class="inum">${i + 1}</div>
+        <div class="ibody">
+          <div class="ititle">${idea.title}</div>
+          <div class="ihook">${idea.hook}</div>
+          <div class="chips">
+            <span class="chip">${idea.type}</span>
+            <span class="chip">${idea.difficulty}</span>
+            <span class="chip ${idea.potential === 'Viral' ? 'g' : ''}">${idea.potential}</span>
+          </div>
+        </div>
+        <div class="icheck">&#10003;</div>
+      </div>`).join('') +
+    '<div class="hint">Select an idea to load it into the SEO tab</div>';
+}
+
+function pickIdea(el, titleJson) {
+  document.querySelectorAll('.idea-card').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('seo-topic').value = JSON.parse(titleJson);
+}
+
+// ── SEO ─────────────────────────────────────────────────────────────────────
+async function genSEO() {
+  const topic = document.getElementById('seo-topic').value.trim();
+  if (!topic) { alert('Enter a video topic or select an idea first.'); return; }
+  setBtn('seo-btn', true, 'Generate SEO Package');
+  document.getElementById('seo-results').innerHTML = '';
+  try {
+    const data = await callAPI({
+      type:     'seo',
+      topic,
+      niche:    document.getElementById('niche').value.trim(),
+      platform: getPlatform(),
+      qty:      seoQty
+    });
+    renderSEO(data, topic);
+  } catch(e) {
+    document.getElementById('seo-results').innerHTML =
+      '<div class="err">Error: ' + e.message + '</div>';
+  }
+  setBtn('seo-btn', false, 'Generate SEO Package');
+}
+
+function renderSEO(data, topic) {
+  const d = document.getElementById('seo-results');
+  d.innerHTML = `
+    <hr class="divider"/>
+    <div class="rlabel">SEO package — ${topic}</div>
+    <div class="seo-block">
+      <div class="sb-label">Title options — click to copy</div>
+      ${data.titles.map((t, i) => `
+        <div class="seo-row" onclick="cp(this, ${JSON.stringify(t)})">
+          <span>${i + 1}. ${t}</span>
+          <span class="charcount">${t.length}ch</span>
+        </div>`).join('')}
+    </div>
+    <div class="seo-block">
+      <div class="sb-label">Optimized description</div>
+      <div class="desc-box">${data.description}</div>
+      <button class="cpbtn" style="margin-top:7px" onclick="cp(this, ${JSON.stringify(data.description)})">Copy description</button>
+    </div>
+    <div class="seo-block">
+      <div class="sb-label">Tags &amp; keywords</div>
+      <div class="tag-cloud">${data.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <button class="cpbtn" onclick="cp(this, ${JSON.stringify(data.tags.join(', '))})">Copy all tags</button>
+    </div>
+    ${data.insight ? `<div class="insight">${data.insight}</div>` : ''}`;
+}
+
+// ── THUMBNAIL ────────────────────────────────────────────────────────────────
+function loadThumb(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const src = ev.target.result;
+    const img = document.getElementById('tpreview');
+    img.src = src;
+    img.style.display = 'block';
+    thumbB64 = src.split(',')[1];
+    document.getElementById('thumb-btn').disabled = false;
+    document.getElementById('drop-zone').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analyzeThumb() {
+  if (!thumbB64) return;
+  setBtn('thumb-btn', true, 'Analyze Thumbnail');
+  document.getElementById('thumb-results').innerHTML = '';
+  try {
+    const data = await callAPI({
+      type:        'thumbnail',
+      niche:       document.getElementById('niche').value.trim(),
+      imageBase64: thumbB64
+    });
+    renderThumb(data);
+  } catch(e) {
+    document.getElementById('thumb-results').innerHTML =
+      '<div class="err">Error: ' + e.message + '</div>';
+  }
+  setBtn('thumb-btn', false, 'Analyze Thumbnail');
+}
+
+function renderThumb(data) {
+  const d = document.getElementById('thumb-results');
+  d.innerHTML = `
+    <hr class="divider"/>
+    <div class="score-summary">
+      <div class="score-big">
+        <div class="score-num">${data.score}</div>
+        <div class="score-lbl">Score</div>
+      </div>
+      <div class="score-sum-text">${data.summary}</div>
+    </div>
+    <div class="score-grid">
+      ${[['Text readability', data.textReadability],
+         ['Visual contrast',  data.visualContrast],
+         ['Emotional impact', data.emotionalImpact],
+         ['Mobile clarity',   data.mobileClarity]].map(([l, v]) => `
+        <div class="score-card">
+          <div class="sc-label">${l}</div>
+          <div class="sc-val">${v}</div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width:${v}%;opacity:${v >= 75 ? 1 : v >= 50 ? .7 : .4}"></div>
+          </div>
+        </div>`).join('')}
+    </div>
+    ${(data.strengths || []).map(s => `
+      <div class="fb-card good">
+        <div class="fb-label">Strength</div>
+        <div class="fb-text"><strong>${s.point}</strong> — ${s.impact}</div>
+      </div>`).join('')}
+    ${(data.improvements || []).map(s => `
+      <div class="fb-card ${s.priority === 'High' ? 'bad' : 'warn'}">
+        <div class="fb-label">${s.priority} priority</div>
+        <div class="fb-text"><strong>${s.issue}</strong><br/>${s.fix}</div>
+      </div>`).join('')}`;
+}
+
+// ── UTILS ────────────────────────────────────────────────────────────────────
+function cp(el, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const o = el.textContent;
+    el.textContent = 'Copied';
+    setTimeout(() => el.textContent = o, 1100);
+  });
+}
+</script>
+</body>
+</html>
