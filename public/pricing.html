@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Orion — Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0C0C0C;--surface:#1A1A1A;--card:#222;--card2:#2A2A2A;
+  --gold:#D4AF6A;--gold2:#F0D99A;
+  --gdim:rgba(212,175,106,0.1);--gdim2:rgba(212,175,106,0.06);
+  --text:#F5F5F5;--text2:rgba(245,245,245,0.55);--text3:rgba(245,245,245,0.28);
+  --bor:rgba(212,175,106,0.13);--bor2:rgba(212,175,106,0.26);
+  --green:#52B788;--red:#E8705F;--r:8px;--rl:12px;
+  --fd:'Cormorant Garamond',serif;--fb:'DM Sans',sans-serif;
+}
+body{background:var(--void);color:var(--text);font-family:var(--fb);min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;border-bottom:1px solid var(--bor);background:rgba(12,12,12,0.97);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lw{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:.5px;color:var(--text)}
+.lw span{color:var(--gold)}
+.lt{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-top:2px}
+.nav-link{font-size:13px;color:var(--text2);text-decoration:none;transition:color .15s}
+.nav-link:hover{color:var(--gold)}
+.main{max-width:920px;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:3rem}
+.hero-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--text3);margin-bottom:.75rem}
+.hero-title{font-family:var(--fd);font-size:clamp(32px,5vw,52px);font-weight:600;color:var(--text);letter-spacing:-.5px;margin-bottom:.5rem;line-height:1.1}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:15px;color:var(--text2);line-height:1.7;max-width:480px;margin:0 auto}
+
+/* BILLING TOGGLE */
+.toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:2.5rem}
+.toggle-lbl{font-size:13px;color:var(--text2);cursor:pointer;transition:color .15s}
+.toggle-lbl.on{color:var(--text);font-weight:500}
+.toggle-track{width:48px;height:26px;border-radius:13px;background:var(--card2);border:1px solid var(--bor2);cursor:pointer;position:relative;transition:background .2s}
+.toggle-track.on{background:var(--gdim);border-color:var(--gold)}
+.toggle-thumb{width:20px;height:20px;border-radius:50%;background:var(--text3);position:absolute;top:2px;left:2px;transition:transform .2s,background .2s}
+.toggle-track.on .toggle-thumb{transform:translateX(22px);background:var(--gold)}
+.save-pill{font-size:10px;padding:3px 10px;border-radius:20px;background:rgba(82,183,136,0.12);border:1px solid rgba(82,183,136,0.3);color:var(--green)}
+
+/* PLANS */
+.plans{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:2.5rem;align-items:start}
+.plan{background:var(--surface);border:1px solid var(--bor);border-radius:var(--rl);padding:1.5rem;position:relative;transition:border-color .2s}
+.plan.featured{border:1.5px solid rgba(212,175,106,.5);background:var(--card)}
+.plan-pop{position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 14px;border-radius:0 0 8px 8px;background:var(--gold);color:var(--void);white-space:nowrap;font-weight:500}
+.plan-name{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.plan-desc{font-size:11px;color:var(--text3);margin-bottom:1.25rem;line-height:1.5}
+.plan-price-row{display:flex;align-items:baseline;gap:4px;margin-bottom:.2rem}
+.plan-price{font-family:var(--fd);font-size:36px;font-weight:600;color:var(--text);line-height:1}
+.plan-per{font-size:12px;color:var(--text3)}
+.plan-billed{font-size:11px;color:var(--text3);margin-bottom:1.25rem;min-height:16px}
+.credits-box{background:var(--card2);border-radius:var(--r);padding:.65rem .9rem;margin-bottom:1.25rem;border:1px solid var(--bor)}
+.credits-num{font-family:var(--fd);font-size:16px;color:var(--gold2);margin-bottom:1px}
+.credits-lbl{font-size:10px;color:var(--text3)}
+.plan-btn{width:100%;padding:11px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--fd);letter-spacing:.5px;transition:all .15s;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:6px;border:none}
+.plan-btn.ghost{background:none;border:1px solid var(--bor2);color:var(--text2)}
+.plan-btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.plan-btn.solid{background:var(--gold);color:var(--void)}
+.plan-btn.solid:hover{opacity:.88}
+.plan-btn:disabled{opacity:.4;cursor:not-allowed}
+.feat-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:.6rem;font-weight:500}
+.feat{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text2);margin-bottom:5px;line-height:1.5}
+.feat-check{color:var(--green);flex-shrink:0;margin-top:1px;font-size:12px}
+.feat-dash{color:var(--text3);flex-shrink:0;margin-top:1px;font-size:12px}
+
+/* HOW CREDITS WORK */
+.section-title{font-family:var(--fd);font-size:22px;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.section-sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
+.credits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:3rem}
+.credit-tile{background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem;text-align:center}
+.credit-action{font-size:11px;color:var(--text2);margin-bottom:.5rem}
+.credit-num{font-family:var(--fd);font-size:26px;font-weight:600;color:var(--gold);line-height:1}
+.credit-unit{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* FAQ */
+.faq-list{margin-bottom:3rem}
+.faq-item{border-bottom:1px solid var(--bor);overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;cursor:pointer;gap:12px}
+.faq-q-text{font-size:14px;color:var(--text);font-weight:500;font-family:var(--fd)}
+.faq-icon{font-size:16px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.faq-icon.open{transform:rotate(180deg)}
+.faq-a{font-size:12px;color:var(--text2);line-height:1.75;padding-bottom:1rem;display:none}
+.faq-a.open{display:block}
+
+/* GUARANTEE */
+.guarantee{background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--rl);padding:1.5rem;text-align:center;margin-bottom:3rem}
+.guarantee-title{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--gold2);margin-bottom:.35rem}
+.guarantee-text{font-size:12px;color:var(--text2);line-height:1.7;max-width:480px;margin:0 auto}
+
+/* DIVIDER */
+.divr{border:none;border-top:1px solid var(--bor);margin:2.5rem 0}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:auto}
+.modal{background:var(--surface);border:1px solid var(--bor);border-radius:var(--rl);padding:2rem;width:100%;max-width:400px;margin:1rem}
+.modal-title{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.modal-sub{font-size:12px;color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
+.modal-field{margin-bottom:1rem}
+.modal-field label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:5px;font-weight:500}
+.modal-field input{width:100%;padding:10px 12px;border-radius:var(--r);border:1px solid var(--bor);background:var(--card);color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:border-color .2s}
+.modal-field input:focus{border-color:rgba(212,175,106,.45)}
+.modal-field input::placeholder{color:var(--text3)}
+.modal-summary{background:var(--card2);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:1.25rem;border:1px solid var(--bor)}
+.modal-summary-line{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:4px}
+.modal-summary-line.total{color:var(--text);font-weight:500;font-size:14px;border-top:1px solid var(--bor);padding-top:8px;margin-top:8px;margin-bottom:0}
+.modal-btn{width:100%;padding:12px;border-radius:var(--r);background:var(--gold);color:var(--void);border:none;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--fd);letter-spacing:.5px;transition:opacity .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-btn:hover{opacity:.88}
+.modal-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel{text-align:center;margin-top:.75rem;font-size:12px;color:var(--text3);cursor:pointer;transition:color .15s}
+.modal-cancel:hover{color:var(--text2)}
+.modal-note{font-size:10px;color:var(--text3);text-align:center;margin-top:.6rem;line-height:1.5}
+.sp{display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,.2);border-top-color:var(--void);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.err-msg{font-size:11px;color:var(--red);margin-top:.5rem;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/index.html">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="4" r="2.5" fill="#D4AF6A"/>
+      <circle cx="4" cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+      <circle cx="24" cy="13" r="1.8" fill="#D4AF6A" opacity=".6"/>
+      <circle cx="8" cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+      <circle cx="20" cy="23" r="1.5" fill="#D4AF6A" opacity=".4"/>
+      <line x1="14" y1="4" x2="4" y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+      <line x1="14" y1="4" x2="24" y2="13" stroke="#D4AF6A" stroke-width=".8" opacity=".4"/>
+      <line x1="4" y1="13" x2="8" y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+      <line x1="24" y1="13" x2="20" y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
+    </svg>
+    <div>
+      <div class="lw">Ori<span>on</span></div>
+      <div class="lt">Built for creators who mean it.</div>
+    </div>
+  </a>
+  <a class="nav-link" href="/index.html">Back to app</a>
+</nav>
+
+<div class="main">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Pricing</div>
+    <div class="hero-title">Simple pricing.<br/><em>Serious results.</em></div>
+    <div class="hero-sub">Every plan comes with the full toolkit. Upgrade when you're ready to go further.</div>
+  </div>
+
+  <!-- BILLING TOGGLE -->
+  <div class="toggle-wrap">
+    <span class="toggle-lbl on" id="lbl-m" onclick="setBilling('monthly')">Monthly</span>
+    <div class="toggle-track" id="toggle" onclick="flipBilling()">
+      <div class="toggle-thumb"></div>
+    </div>
+    <span class="toggle-lbl" id="lbl-y" onclick="setBilling('yearly')">Yearly</span>
+    <span class="save-pill">Save 30%</span>
+  </div>
+
+  <!-- PLANS -->
+  <div class="plans">
+
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-desc">Try Orion with no commitment, no credit card.</div>
+      <div class="plan-price-row"><span class="plan-price">$0</span><span class="plan-per">/month</span></div>
+      <div class="plan-billed">&nbsp;</div>
+      <div class="credits-box">
+        <div class="credits-num">3 generations / day</div>
+        <div class="credits-lbl">Resets at midnight &mdash; always free</div>
+      </div>
+      <button class="plan-btn ghost" onclick="window.location='/index.html'">Start for free</button>
+      <div class="feat-label">What's included</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>1 video idea per generation</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>1 SEO title per generation</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Description &amp; 15 tags</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Weekly content plan</div>
+      <div class="feat"><span class="feat-dash">&#8212;</span>Monthly &amp; yearly plans</div>
+      <div class="feat"><span class="feat-dash">&#8212;</span>PDF download</div>
+      <div class="feat"><span class="feat-dash">&#8212;</span>Thumbnail AI</div>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-pop">Most popular</div>
+      <div class="plan-name">Basic</div>
+      <div class="plan-desc">For creators posting consistently and growing steadily.</div>
+      <div class="plan-price-row"><span class="plan-price" id="basic-price">$9</span><span class="plan-per">/month</span></div>
+      <div class="plan-billed" id="basic-billed">&nbsp;</div>
+      <div class="credits-box">
+        <div class="credits-num">50 generations / month</div>
+        <div class="credits-lbl">Roll over up to 25 unused credits</div>
+      </div>
+      <button class="plan-btn solid" id="basic-btn" onclick="openModal('basic')">Get Basic</button>
+      <div class="feat-label">Everything in Free, plus</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Up to 10 ideas per generation</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Up to 10 SEO titles per gen</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Monthly content plan</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>PDF download</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Priority generation speed</div>
+      <div class="feat"><span class="feat-dash">&#8212;</span>Yearly roadmap</div>
+      <div class="feat"><span class="feat-dash">&#8212;</span>Thumbnail AI</div>
+    </div>
+
+    <div class="plan">
+      <div class="plan-name">Premium</div>
+      <div class="plan-desc">For serious creators and agencies managing multiple channels.</div>
+      <div class="plan-price-row"><span class="plan-price" id="prem-price">$19</span><span class="plan-per">/month</span></div>
+      <div class="plan-billed" id="prem-billed">&nbsp;</div>
+      <div class="credits-box">
+        <div class="credits-num">200 generations / month</div>
+        <div class="credits-lbl">Roll over up to 100 unused credits</div>
+      </div>
+      <button class="plan-btn ghost" id="prem-btn" onclick="openModal('premium')" style="border-color:rgba(212,175,106,.35);color:var(--gold)">Get Premium &#10022;</button>
+      <div class="feat-label">Everything in Basic, plus</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Up to 50 ideas per generation</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Up to 20 SEO titles per gen</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Yearly content roadmap</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Thumbnail AI (2 credits)</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Multi-channel planning</div>
+      <div class="feat"><span class="feat-check">&#10003;</span>Fastest generation speed</div>
+    </div>
+
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee">
+    <div class="guarantee-title">7-day money-back guarantee</div>
+    <div class="guarantee-text">Not happy in your first 7 days? Email us and we'll refund you in full — no questions asked. We'd rather you leave happy than stay unhappy.</div>
+  </div>
+
+  <div class="divr"></div>
+
+  <!-- CREDITS -->
+  <div class="section-title">How credits work</div>
+  <div class="section-sub">One credit = one AI generation. Here's what each action costs regardless of quantity.</div>
+  <div class="credits-grid">
+    <div class="credit-tile"><div class="credit-action">Video ideas</div><div class="credit-num">1</div><div class="credit-unit">credit</div></div>
+    <div class="credit-tile"><div class="credit-action">SEO package</div><div class="credit-num">1</div><div class="credit-unit">credit</div></div>
+    <div class="credit-tile"><div class="credit-action">Weekly plan</div><div class="credit-num">1</div><div class="credit-unit">credit</div></div>
+    <div class="credit-tile"><div class="credit-action">Monthly plan</div><div class="credit-num">2</div><div class="credit-unit">credits</div></div>
+    <div class="credit-tile"><div class="credit-action">Yearly roadmap</div><div class="credit-num">4</div><div class="credit-unit">credits</div></div>
+    <div class="credit-tile"><div class="credit-action">Thumbnail AI</div><div class="credit-num">2</div><div class="credit-unit">credits</div></div>
+  </div>
+
+  <div class="divr"></div>
+
+  <!-- FAQ -->
+  <div class="section-title">Common questions</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do unused credits roll over?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">Yes. Basic rolls over up to 25 unused credits, Premium up to 100. They expire after 60 days so you don't lose everything from a slow month, but they don't stack forever.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What counts as one generation?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">Each time you hit Generate is one credit — regardless of how many ideas or titles you ask for. Generating 50 ideas costs the same 1 credit as generating 1. The quantity you can choose depends on your plan tier, not your credit balance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Can I use Orion for multiple channels?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">Yes — no limit on niches or channels. Your credits are shared across everything you generate in your account. Premium users managing multiple channels get the best value from the 200 credit limit.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Can I cancel anytime?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">Yes, cancel anytime with no fees or lock-in. Your plan runs until the end of the billing period, then drops to Free. You keep everything you've already downloaded.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Why does Thumbnail AI cost 2 credits?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">Thumbnail analysis uses Claude's vision model which costs more to run than text generation. The 2-credit cost reflects the actual API difference — we're passing it through honestly, not marking it up.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What payment methods do you accept?</span><span class="faq-icon">&#8964;</span></div>
+      <div class="faq-a">All major credit and debit cards (Visa, Mastercard, Amex, Discover) via Stripe. Your card details are handled entirely by Stripe — we never see or store them.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">Get Basic</div>
+    <div class="modal-sub">You'll be taken to Stripe's secure checkout to complete payment.</div>
+    <div class="modal-field">
+      <label>Your email</label>
+      <input type="email" id="modal-email" placeholder="you@example.com"/>
+    </div>
+    <div class="modal-summary" id="modal-summary"></div>
+    <button class="modal-btn" id="modal-btn" onclick="startCheckout()">Continue to payment &#8594;</button>
+    <div class="modal-cancel" onclick="closeModal()">Cancel</div>
+    <div class="modal-note">Secured by Stripe &middot; Cancel anytime &middot; 7-day refund guarantee</div>
+    <div class="err-msg hidden" id="modal-err"></div>
+  </div>
+</div>
+
+<!-- SUCCESS PAGE LINK -->
+<script>
+var billing='monthly';
+var selectedPlan='';
+
+var prices={
+  basic:{monthly:{display:'$9',billed:'',id:'basic_monthly'},yearly:{display:'$6.40',billed:'Billed $76.80/year',id:'basic_yearly'}},
+  premium:{monthly:{display:'$19',billed:'',id:'premium_monthly'},yearly:{display:'$13.30',billed:'Billed $159.60/year',id:'premium_yearly'}}
+};
+
+function setBilling(b){
+  billing=b;
+  var isY=b==='yearly';
+  document.getElementById('toggle').classList.toggle('on',isY);
+  document.getElementById('lbl-m').classList.toggle('on',!isY);
+  document.getElementById('lbl-y').classList.toggle('on',isY);
+  updatePrices();
+}
+
+function flipBilling(){setBilling(billing==='monthly'?'yearly':'monthly');}
+
+function updatePrices(){
+  var bp=prices.basic[billing];
+  var pp=prices.premium[billing];
+  document.getElementById('basic-price').textContent=bp.display;
+  document.getElementById('basic-billed').textContent=bp.billed||'\u00a0';
+  document.getElementById('prem-price').textContent=pp.display;
+  document.getElementById('prem-billed').textContent=pp.billed||'\u00a0';
+}
+
+function toggleFaq(el){
+  var icon=el.querySelector('.faq-icon');
+  var ans=el.nextElementSibling;
+  var open=ans.classList.toggle('open');
+  icon.classList.toggle('open',open);
+}
+
+function openModal(plan){
+  selectedPlan=plan;
+  var p=prices[plan][billing];
+  var name=plan.charAt(0).toUpperCase()+plan.slice(1);
+  document.getElementById('modal-title').textContent='Get Orion '+name;
+  document.getElementById('modal-summary').innerHTML=
+    '<div class="modal-summary-line"><span>Orion '+name+'</span><span>'+p.display+'/mo</span></div>'
+    +(billing==='yearly'?'<div class="modal-summary-line"><span>Billing</span><span>Yearly</span></div>':'')
+    +'<div class="modal-summary-line total"><span>Total today</span><span>'+(billing==='yearly'?(plan==='basic'?'$76.80':'$159.60'):p.display)+'</span></div>';
+  document.getElementById('modal-err').classList.add('hidden');
+  document.getElementById('modal-btn').disabled=false;
+  document.getElementById('modal-btn').innerHTML='Continue to payment &#8594;';
+  document.getElementById('modal-overlay').classList.add('show');
+  document.getElementById('modal-email').focus();
+}
+
+function closeModal(){document.getElementById('modal-overlay').classList.remove('show');}
+function closeModalOutside(e){if(e.target===document.getElementById('modal-overlay'))closeModal();}
+
+async function startCheckout(){
+  var email=document.getElementById('modal-email').value.trim();
+  if(!email||!email.includes('@')){
+    showErr('Please enter a valid email address.');return;
+  }
+  var btn=document.getElementById('modal-btn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="sp"></span> Redirecting to Stripe...';
+  document.getElementById('modal-err').classList.add('hidden');
+
+  try{
+    var res=await fetch('/api/checkout',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({plan:selectedPlan,billing:billing,email:email})
+    });
+    var data=await res.json();
+    if(data.url){
+      window.location.href=data.url;
+    } else {
+      showErr(data.error||'Something went wrong. Please try again.');
+      btn.disabled=false;
+      btn.innerHTML='Continue to payment &#8594;';
+    }
+  }catch(e){
+    showErr('Connection error. Please try again.');
+    btn.disabled=false;
+    btn.innerHTML='Continue to payment &#8594;';
+  }
+}
+
+function showErr(msg){
+  var el=document.getElementById('modal-err');
+  el.textContent=msg;
+  el.classList.remove('hidden');
+}
+
+document.getElementById('modal-email').addEventListener('keydown',function(e){
+  if(e.key==='Enter')startCheckout();
+});
+</script>
+</body>
+</html>
