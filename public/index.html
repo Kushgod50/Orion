@@ -17,6 +17,8 @@
   --fd:'Cormorant Garamond',serif;--fb:'DM Sans',sans-serif;
 }
 body{background:var(--void);color:var(--text);font-family:var(--fb);min-height:100vh}
+
+/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;border-bottom:1px solid var(--bor);position:sticky;top:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(16px);z-index:100}
 .logo{display:flex;align-items:center;gap:10px}
 .lw{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:.5px}
@@ -25,9 +27,35 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .pr{display:flex;gap:5px}
 .pb{font-size:10px;padding:4px 13px;border-radius:20px;border:1px solid var(--bor);color:var(--text2);background:none;cursor:pointer;font-family:var(--fb);transition:all .2s}
 .pb.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+
+/* LAYOUT */
 .main{max-width:860px;margin:0 auto;padding:2rem 1.5rem 5rem}
+
+/* INSTRUCTIONS */
+.how-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--r);padding:.8rem 1.1rem;cursor:pointer;font-family:var(--fb);color:var(--gold);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s}
+.how-toggle:hover{background:var(--gdim)}
+.how-arrow{font-size:16px;transition:transform .25s;display:inline-block}
+.how-arrow.open{transform:rotate(180deg)}
+.how-body{background:var(--surface);border:1px solid var(--bor);border-top:none;border-radius:0 0 var(--r) var(--r);padding:1.25rem 1.4rem;margin-bottom:1.25rem;display:block}
+.how-body.closed{display:none}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.how-step{display:flex;gap:12px;align-items:flex-start}
+.how-num{min-width:28px;height:28px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;color:var(--gold);flex-shrink:0}
+.how-step-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px;font-family:var(--fd)}
+.how-step-desc{font-size:11px;color:var(--text2);line-height:1.65}
+.how-div{border:none;border-top:1px solid var(--bor);margin:.75rem 0}
+.how-tip{display:flex;align-items:flex-start;gap:8px;background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--r);padding:.75rem 1rem;font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
+.plan-table{width:100%;border-collapse:collapse;font-size:11px}
+.plan-table th{text-align:left;color:var(--text3);font-weight:500;padding:5px 8px;letter-spacing:.5px;text-transform:uppercase;font-size:9px;border-bottom:1px solid var(--bor)}
+.plan-table td{padding:6px 8px;color:var(--text2);border-bottom:1px solid rgba(212,175,106,0.06)}
+.plan-table tr:last-child td{border-bottom:none}
+.plan-table .yes{color:var(--gold)}
+.plan-table .no{color:var(--text3)}
+
+/* SETUP */
 .setup{background:var(--surface);border:1px solid var(--bor);border-radius:var(--rl);padding:1.4rem;margin-bottom:1.1rem}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 .fl label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:1.8px;color:var(--text3);margin-bottom:5px;font-weight:500}
 .fl input,.fl select,.fl textarea{width:100%;padding:9px 12px;border-radius:var(--r);border:1px solid var(--bor);background:var(--card);color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:border-color .2s}
 .fl input:focus,.fl select:focus,.fl textarea:focus{border-color:rgba(212,175,106,.45)}
@@ -37,28 +65,38 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .pill{font-size:11px;padding:5px 13px;border-radius:20px;border:1px solid var(--bor);color:var(--text2);cursor:pointer;background:none;font-family:var(--fb);transition:all .15s}
 .pill.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+
+/* MAIN TABS */
 .tabs{display:flex;gap:3px;background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:3px;margin-bottom:1.1rem}
 .tab{flex:1;padding:9px;border-radius:6px;font-size:12px;cursor:pointer;border:none;background:none;color:var(--text2);font-family:var(--fb);letter-spacing:.3px;transition:all .18s;text-align:center}
 .tab.on{background:var(--card2);color:var(--gold);border:1px solid var(--bor)}
+
+/* QTY */
 .qn{font-size:10px;color:var(--text3);margin-bottom:7px;letter-spacing:.3px}
 .qr{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.9rem}
 .qb{padding:6px 17px;border-radius:var(--r);border:1px solid var(--bor);background:var(--card);color:var(--text2);font-size:12px;cursor:pointer;font-family:var(--fb);transition:all .15s}
 .qb.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
 .qb.lk{opacity:.3;cursor:not-allowed}
+
+/* BUTTONS */
 .gbtn{width:100%;padding:12px;border-radius:var(--r);background:var(--gdim);color:var(--gold);font-size:13px;font-weight:500;border:1px solid var(--gold);cursor:pointer;font-family:var(--fd);letter-spacing:.8px;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
 .gbtn:hover:not(:disabled){background:var(--gold);color:var(--void)}
 .gbtn:disabled{opacity:.35;cursor:not-allowed}
+
+/* RESULTS */
 .res{margin-top:1.1rem;max-height:60vh;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--gold) var(--card)}
 .res::-webkit-scrollbar{width:4px}
-.res::-webkit-scrollbar-track{background:var(--card)}
+.res::-webkit-scrollbar-track{background:var(--card);border-radius:2px}
 .res::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
 .rl{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--text3);margin-bottom:10px}
+
+/* IDEA CARDS */
 .ic{background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:6px;cursor:pointer;transition:all .18s;display:flex;align-items:flex-start;gap:10px;position:relative}
 .ic:hover{border-color:var(--bor2);background:var(--card)}
 .ic.sel{border-color:rgba(212,175,106,.5);background:var(--gdim)}
 .ic-badge{position:absolute;top:8px;right:8px;font-size:9px;color:var(--text3);background:var(--card2);border:1px solid var(--bor);border-radius:20px;padding:2px 8px;letter-spacing:.5px;transition:all .15s}
 .ic.sel .ic-badge{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
-.ic-popup{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:220px;background:var(--card2);border:1px solid var(--gold);border-radius:var(--r);padding:.75rem 1rem;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.ic-popup{display:none;position:absolute;bottom:calc(100% + 10px);left:0;right:0;margin:0 auto;width:220px;background:var(--card2);border:1px solid var(--gold);border-radius:var(--r);padding:.75rem 1rem;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,.6)}
 .ic-popup::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--gold)}
 .ic-popup.show{display:block}
 .ic-popup-label{font-size:9px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
@@ -72,6 +110,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .chips{display:flex;gap:4px;flex-wrap:wrap}
 .chip{font-size:9px;padding:2px 7px;border-radius:20px;background:var(--card2);border:1px solid var(--bor);color:var(--text3)}
 .chip.g{background:var(--gdim);border-color:rgba(212,175,106,.3);color:var(--gold)}
+
+/* SEO */
 .sblock{background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1.1rem;margin-bottom:7px}
 .sbl{font-size:9px;text-transform:uppercase;letter-spacing:1.8px;color:var(--text3);margin-bottom:8px}
 .srow{background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:8px 11px;margin-bottom:4px;font-size:12px;cursor:pointer;transition:border-color .15s;display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--text)}
@@ -83,6 +123,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .cb{font-size:10px;padding:5px 12px;border-radius:var(--r);border:1px solid var(--bor);background:none;color:var(--text2);cursor:pointer;font-family:var(--fb);transition:all .15s}
 .cb:hover{border-color:var(--gold);color:var(--gold)}
 .ins{background:var(--gdim2);border:1px solid rgba(212,175,106,.2);border-radius:var(--r);padding:10px 13px;font-size:13px;color:var(--gold2);line-height:1.6;margin-top:6px;font-family:var(--fd)}
+
+/* PAYWALL */
 .pw{background:var(--gdim2);border:1px solid rgba(212,175,106,.15);border-radius:var(--rl);padding:2rem;text-align:center}
 .pwt{font-family:var(--fd);font-size:22px;font-weight:600;color:var(--gold2);letter-spacing:.5px;margin-bottom:.4rem}
 .pws{font-size:12px;color:var(--text2);margin-bottom:1.25rem;line-height:1.7;max-width:420px;margin-left:auto;margin-right:auto}
@@ -90,10 +132,32 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .pwu{padding:10px 24px;border-radius:var(--r);background:var(--gold);color:var(--void);border:none;font-size:12px;cursor:pointer;font-family:var(--fd);letter-spacing:.5px;transition:opacity .15s}
 .pwu:hover{opacity:.85}
 .pwsk{padding:10px 24px;border-radius:var(--r);background:none;color:var(--text2);border:1px solid var(--bor);font-size:12px;cursor:pointer;font-family:var(--fb)}
+
+/* THUMBNAIL */
 .dz{border:1px dashed var(--bor2);border-radius:var(--rl);padding:2.25rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;margin-bottom:11px}
 .dz:hover{border-color:var(--gold);background:var(--gdim2)}
 .dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 #tp{max-width:100%;border-radius:var(--r);margin-bottom:11px;display:none}
+.ss{display:flex;align-items:center;gap:1rem;background:var(--card);border-radius:var(--r);padding:1rem;margin-bottom:.9rem;border:1px solid var(--bor)}
+.sb2{text-align:center;min-width:64px}
+.sn{font-family:var(--fd);font-size:44px;font-weight:600;color:var(--gold);line-height:1}
+.sl2{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.st{font-size:12px;color:var(--text2);line-height:1.65;border-left:1px solid var(--bor);padding-left:1rem;font-family:var(--fd)}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.sc{background:var(--card);border-radius:var(--r);padding:.85rem;border:1px solid var(--bor)}
+.scl{font-size:9px;color:var(--text3);margin-bottom:4px;letter-spacing:.5px;text-transform:uppercase}
+.scv{font-size:22px;font-weight:500;font-family:var(--fd);margin-bottom:5px;color:var(--gold)}
+.bg{height:2px;background:var(--bor);border-radius:2px}
+.bf{height:100%;border-radius:2px;background:var(--gold);transition:width .6s ease}
+.fc{border-left:1px solid;padding:9px 12px;margin-bottom:5px;background:var(--card);border-radius:0 var(--r) var(--r) 0}
+.fc.good{border-color:var(--gold)}
+.fc.warn{border-color:rgba(212,175,106,.35)}
+.fc.bad{border-color:rgba(245,245,245,.15)}
+.fcl{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);margin-bottom:3px}
+.fc.warn .fcl,.fc.bad .fcl{color:var(--text3)}
+.fct{font-size:11px;color:var(--text2);line-height:1.5}
+
+/* CONTENT PLANNER */
 .plan-type-row{display:flex;gap:8px;margin-bottom:1.1rem}
 .ptbtn{flex:1;padding:10px;border-radius:var(--r);border:1px solid var(--bor);background:var(--card);color:var(--text2);font-size:13px;cursor:pointer;font-family:var(--fd);letter-spacing:.3px;transition:all .2s;text-align:center}
 .ptbtn.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
@@ -101,6 +165,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .plat-check{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer;padding:6px 12px;border-radius:20px;border:1px solid var(--bor);background:none;transition:all .15s}
 .plat-check.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
 .plat-check input{display:none}
+.follower-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* PLAN RESULTS */
 .plan-summary{background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--rl);padding:1.1rem 1.3rem;margin-bottom:1rem}
 .plan-summary-title{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--gold2);margin-bottom:.3rem}
 .plan-summary-sub{font-size:12px;color:var(--text2);line-height:1.6}
@@ -142,24 +209,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .pillar{font-size:11px;padding:5px 12px;border-radius:20px;background:var(--gdim2);border:1px solid var(--bor);color:var(--text2);font-family:var(--fd)}
 .brand-box{background:var(--gdim2);border:1px solid rgba(212,175,106,.2);border-radius:var(--r);padding:1rem;margin-top:.75rem;font-family:var(--fd);font-size:13px;color:var(--gold2);line-height:1.6}
 .monetize-box{background:rgba(82,183,136,0.06);border:1px solid rgba(82,183,136,0.2);border-radius:var(--r);padding:1rem;margin-top:.75rem;font-size:12px;color:rgba(82,183,136,0.9);line-height:1.6}
-.ss{display:flex;align-items:center;gap:1rem;background:var(--card);border-radius:var(--r);padding:1rem;margin-bottom:.9rem;border:1px solid var(--bor)}
-.sb2{text-align:center;min-width:64px}
-.sn{font-family:var(--fd);font-size:44px;font-weight:600;color:var(--gold);line-height:1}
-.sl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
-.st{font-size:12px;color:var(--text2);line-height:1.65;border-left:1px solid var(--bor);padding-left:1rem;font-family:var(--fd)}
-.sg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
-.sc{background:var(--card);border-radius:var(--r);padding:.85rem;border:1px solid var(--bor)}
-.scl{font-size:9px;color:var(--text3);margin-bottom:4px;letter-spacing:.5px;text-transform:uppercase}
-.scv{font-size:22px;font-weight:500;font-family:var(--fd);margin-bottom:5px;color:var(--gold)}
-.bg{height:2px;background:var(--bor);border-radius:2px}
-.bf{height:100%;border-radius:2px;background:var(--gold);transition:width .6s ease}
-.fc{border-left:1px solid;padding:9px 12px;margin-bottom:5px;background:var(--card);border-radius:0 var(--r) var(--r) 0}
-.fc.good{border-color:var(--gold)}
-.fc.warn{border-color:rgba(212,175,106,.35)}
-.fc.bad{border-color:rgba(245,245,245,.15)}
-.fcl{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);margin-bottom:3px}
-.fc.warn .fcl,.fc.bad .fcl{color:var(--text3)}
-.fct{font-size:11px;color:var(--text2);line-height:1.5}
+
+/* MISC */
 .divr{border:none;border-top:1px solid var(--bor);margin:1.1rem 0}
 .hint{font-size:10px;color:var(--text3);text-align:center;margin-top:7px}
 .sp{display:inline-block;width:12px;height:12px;border:1.5px solid rgba(212,175,106,.25);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
@@ -168,6 +219,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .err{color:var(--red);font-size:12px;padding:.6rem .9rem;background:rgba(232,112,95,.06);border-radius:var(--r);border:1px solid rgba(232,112,95,.2);line-height:1.5}
 .fade{animation:fi .3s ease}
 @keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.section-title{font-family:var(--fd);font-size:18px;font-weight:600;letter-spacing:.3px;margin-bottom:.3rem;color:var(--text)}
+.section-sub{font-size:12px;color:var(--text2);margin-bottom:1rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -199,103 +252,113 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 
 <div class="main">
 
-  <!-- ═══ HOW TO USE ═══ -->
-  <div style="margin-bottom:2rem">
-    <div style="font-family:var(--fd);font-size:24px;font-weight:600;color:var(--gold2);margin-bottom:.2rem;letter-spacing:.3px">How to use Orion</div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:1.25rem">Your AI-powered creator studio &mdash; ideas, SEO, content planning, and thumbnail feedback in one place.</div>
+  <!-- HOW TO USE -->
+  <div style="margin-bottom:1.25rem">
+    <button class="how-toggle" onclick="toggleHow()">
+      <span>&#9670; How to use Orion</span>
+      <span class="how-arrow" id="how-arrow">&#8964;</span>
+    </button>
+    <div class="how-body" id="how-body">
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.1rem">
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">1</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Enter your niche</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Fill in your niche in the setup panel below. Be specific &mdash; "home workouts for busy moms" gets far better results than just "fitness". Add your platform and any goals too.</div>
+      <!-- QUICK START -->
+      <div style="background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1rem">
+        <div style="font-family:var(--fd);font-size:15px;font-weight:600;color:var(--gold2);margin-bottom:.6rem">Quick start &mdash; 3 steps to your first result</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div style="background:var(--card);border-radius:var(--r);padding:.8rem;border:1px solid var(--bor)">
+            <div style="font-family:var(--fd);font-size:20px;color:var(--gold);margin-bottom:4px">1</div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px">Enter your niche</div>
+            <div style="font-size:11px;color:var(--text2);line-height:1.55">Type what your channel is about in the setup panel below. Specific beats vague &mdash; "budget travel Southeast Asia" gets far better results than just "travel".</div>
+          </div>
+          <div style="background:var(--card);border-radius:var(--r);padding:.8rem;border:1px solid var(--bor)">
+            <div style="font-family:var(--fd);font-size:20px;color:var(--gold);margin-bottom:4px">2</div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px">Pick your tab</div>
+            <div style="font-size:11px;color:var(--text2);line-height:1.55">Use Video Ideas to brainstorm, SEO &amp; Tags to optimise, Content Planner to build a growth roadmap, or Thumbnail AI to improve your click-through rate.</div>
+          </div>
+          <div style="background:var(--card);border-radius:var(--r);padding:.8rem;border:1px solid var(--bor)">
+            <div style="font-family:var(--fd);font-size:20px;color:var(--gold);margin-bottom:4px">3</div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px">Generate &amp; copy</div>
+            <div style="font-size:11px;color:var(--text2);line-height:1.55">Hit the gold Generate button. Results appear below. Click any title, description, or tag to copy it to your clipboard instantly &mdash; ready to paste into YouTube Studio.</div>
+          </div>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">2</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Pick a tab &amp; generate</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Choose Video Ideas, SEO &amp; Tags, Content Planner, or Thumbnail AI. Hit the gold Generate button. Orion calls the AI and returns results in seconds.</div>
+
+      <!-- TAB GUIDES -->
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:8px;font-weight:500">How each tab works</div>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-num">&#10022;</div>
+          <div>
+            <div class="how-step-title">Video Ideas</div>
+            <div class="how-step-desc">Choose how many ideas to generate (free = 1, upgrade for more). Each result shows a title, hook sentence, content type, difficulty, and viral potential rating. Click any card to select it &mdash; a gold popup appears with a direct link to the SEO tab. Click the card again to deselect it.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">&#8593;</div>
+          <div>
+            <div class="how-step-title">SEO &amp; Tags</div>
+            <div class="how-step-desc">Type your video topic manually, or select an idea from the Ideas tab to auto-fill it. Pick how many title options you want. You'll get YouTube-optimised titles with character counts, a full keyword-rich description ready to paste, and 15 search tags. Click any item to copy it.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">&#9776;</div>
+          <div>
+            <div class="how-step-title">Content Planner</div>
+            <div class="how-step-desc">Select Weekly, Monthly, or Yearly. Check every platform you're active on and enter your follower count for each. Set a specific growth goal (e.g. "reach 5k YouTube subs in 60 days") and posting frequency. Orion builds you a personalised roadmap with days, hooks, content types, and growth strategies.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">&#9670;</div>
+          <div>
+            <div class="how-step-title">Thumbnail AI &mdash; Premium</div>
+            <div class="how-step-desc">Upload your thumbnail image (PNG or JPG, 1280x720 ideal). Orion scores it out of 100 across four dimensions: text readability, visual contrast, emotional impact, and mobile clarity. Every weakness comes with a specific, actionable fix so you know exactly what to change before you publish.</div>
+          </div>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">3</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Copy &amp; use</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Click any title, description, or tag to copy it instantly. Paste directly into YouTube Studio, TikTok, or wherever you publish your content.</div>
+
+      <div class="how-div"></div>
+
+      <!-- TIPS -->
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:8px;font-weight:500">Tips for better results</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1rem">
+        <div class="how-tip" style="margin-bottom:0">
+          <span style="color:var(--gold);font-size:12px;flex-shrink:0;margin-top:1px">&#10022;</span>
+          <span><strong style="color:var(--text);font-weight:500">Be as specific as possible.</strong> "Home workouts for busy moms over 40 who hate the gym" will generate far more targeted ideas than just "fitness". The niche field is the most important input on the page.</span>
+        </div>
+        <div class="how-tip" style="margin-bottom:0">
+          <span style="color:var(--gold);font-size:12px;flex-shrink:0;margin-top:1px">&#10022;</span>
+          <span><strong style="color:var(--text);font-weight:500">Use the Ideas &rarr; SEO shortcut.</strong> After generating ideas, click a card and hit "Open in SEO &amp; Tags". The title auto-fills and you can generate the full SEO package in one click &mdash; no typing needed.</span>
+        </div>
+        <div class="how-tip" style="margin-bottom:0">
+          <span style="color:var(--gold);font-size:12px;flex-shrink:0;margin-top:1px">&#10022;</span>
+          <span><strong style="color:var(--text);font-weight:500">For the Content Planner,</strong> enter your real follower counts even if they're small. Orion calibrates the strategy to where you actually are &mdash; a plan for 200 followers looks very different from one for 20k.</span>
+        </div>
+        <div class="how-tip" style="margin-bottom:0">
+          <span style="color:var(--gold);font-size:12px;flex-shrink:0;margin-top:1px">&#10022;</span>
+          <span><strong style="color:var(--text);font-weight:500">Aim for titles under 60 characters.</strong> The character count shown next to each generated title helps you pick the right one. YouTube shows roughly 60 chars in search results before cutting off.</span>
+        </div>
       </div>
+
+      <div class="how-div"></div>
+
+      <!-- PLAN TABLE -->
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:8px;font-weight:500">Plan comparison</div>
+      <table class="plan-table">
+        <thead><tr><th>Feature</th><th>Free</th><th>Basic</th><th>Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Video ideas per generation</td><td class="yes">1</td><td class="yes">Up to 10</td><td class="yes">Up to 50</td></tr>
+          <tr><td>SEO title options</td><td class="yes">1</td><td class="yes">Up to 10</td><td class="yes">Up to 20</td></tr>
+          <tr><td>Description &amp; tags</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+          <tr><td>Content planner &mdash; weekly</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+          <tr><td>Content planner &mdash; monthly</td><td class="no">&#8212;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+          <tr><td>Content planner &mdash; yearly roadmap</td><td class="no">&#8212;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+          <tr><td>Thumbnail AI analysis</td><td class="no">&#8212;</td><td class="no">&#8212;</td><td class="yes">&#10003;</td></tr>
+        </tbody>
+      </table>
+      <div style="font-size:10px;color:var(--text3);margin-top:.6rem;text-align:center">Toggle your plan using the Free / Basic / Premium buttons in the top-right corner to simulate different tiers.</div>
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem">
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#10022;</div>
-        <div>
-          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Video Ideas tab</div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.65">Select how many ideas to generate (1 free, upgrade for more). Each card shows a title, hook, content type, difficulty, and viral potential. Click a card to select it &mdash; a popup appears with a shortcut straight to the SEO tab. Click again to deselect.</div>
-        </div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#8593;</div>
-        <div>
-          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">SEO &amp; Tags tab</div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.65">Type a topic or select an idea to auto-fill it. Choose how many title options. You get optimised titles with character counts, a full 150-200 word description, and 15 search tags. Click any to copy instantly.</div>
-        </div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9776;</div>
-        <div>
-          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Content Planner tab</div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.65">Choose Weekly, Monthly, or Yearly. Check every platform you post on and enter your follower count for each. Set a growth goal and posting frequency. Orion builds a full personalised roadmap with posting days, hooks, and growth strategies.</div>
-        </div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9670;</div>
-        <div>
-          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Thumbnail AI &mdash; Premium</div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.65">Upload your thumbnail (PNG/JPG, 1280x720 ideal). Get scored out of 100 across text readability, visual contrast, emotional impact, and mobile clarity. Every weakness gets a specific fix to act on before you publish.</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.1rem">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:10px;font-weight:500">Pro tips</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65">
-          <span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span>
-          <span><strong style="color:var(--text);font-weight:500">Ideas &rarr; SEO shortcut.</strong> Click an idea card, then hit "Open in SEO &amp; Tags". The title auto-fills so you can generate a full package in one click &mdash; no typing.</span>
-        </div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65">
-          <span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span>
-          <span><strong style="color:var(--text);font-weight:500">Keep titles under 60 chars.</strong> YouTube cuts off longer titles in search results. The character count shown next to each title helps you pick the right one.</span>
-        </div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65">
-          <span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span>
-          <span><strong style="color:var(--text);font-weight:500">Enter real follower counts.</strong> Even if they're small. The Content Planner calibrates your strategy to where you actually are &mdash; not where you want to be.</span>
-        </div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65">
-          <span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span>
-          <span><strong style="color:var(--text);font-weight:500">Toggle plans top-right.</strong> Switch Free / Basic / Premium to see which features unlock. All three buttons are available to simulate tiers before you set up real billing.</span>
-        </div>
-      </div>
-    </div>
-
-    <table style="width:100%;border-collapse:collapse;font-size:11px;background:var(--surface);border-radius:var(--r);border:1px solid var(--bor);overflow:hidden">
-      <thead>
-        <tr style="border-bottom:1px solid var(--bor)">
-          <th style="text-align:left;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Feature</th>
-          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Free</th>
-          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Basic</th>
-          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Premium</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Video ideas</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 50</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">SEO title options</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 20</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Description &amp; tags</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; weekly</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; monthly &amp; yearly</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr><td style="padding:7px 12px;color:var(--text2)">Thumbnail AI</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-      </tbody>
-    </table>
   </div>
 
-  <!-- ═══ SETUP ═══ -->
+  <!-- GLOBAL SETUP -->
   <div class="setup">
     <div class="fr">
       <div class="fl"><label>Your niche</label><input id="niche" placeholder="e.g. Personal Finance, Gaming, Fitness..."/></div>
@@ -315,7 +378,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     <div class="fl"><label>Goal / context (optional)</label><textarea id="goal" placeholder="e.g. grow to 10k subscribers, post weekly, appeal to beginners..."></textarea></div>
   </div>
 
-  <!-- ═══ MAIN TABS ═══ -->
+  <!-- MAIN TABS -->
   <div class="tabs">
     <button class="tab on" onclick="showTab('ideas',this)">&#10022; Video Ideas</button>
     <button class="tab" onclick="showTab('seo',this)">&#8593; SEO &amp; Tags</button>
@@ -323,11 +386,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     <button class="tab" onclick="showTab('thumb',this)">&#9670; Thumbnail AI</button>
   </div>
 
-  <!-- ═══ IDEAS ═══ -->
+  <!-- ═══ IDEAS TAB ═══ -->
   <div id="tab-ideas">
-    <div class="qn" id="idn">Free &mdash; 1 idea included. Upgrade to unlock more.</div>
+    <div class="qn" id="idn">Free — 1 idea included. Upgrade to unlock more.</div>
     <div class="qr" id="iq">
-      <button class="qb on" data-q="1" onclick="pickQty(this,'ideas')">1 &mdash; Free</button>
+      <button class="qb on" data-q="1" onclick="pickQty(this,'ideas')">1 — Free</button>
       <button class="qb" data-q="5" onclick="pickQty(this,'ideas')">5</button>
       <button class="qb lk" data-q="10" onclick="pickQty(this,'ideas')">10</button>
       <button class="qb lk" data-q="20" onclick="pickQty(this,'ideas')">20</button>
@@ -337,15 +400,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     <div class="res" id="ir"></div>
   </div>
 
-  <!-- ═══ SEO ═══ -->
+  <!-- ═══ SEO TAB ═══ -->
   <div id="tab-seo" class="hidden">
     <div class="fl" style="margin-bottom:12px">
-      <label>Video topic &mdash; or select an idea above</label>
+      <label>Video topic — or select an idea above</label>
       <input id="seo-topic" placeholder="e.g. How I saved $10,000 in one year on a $40k salary"/>
     </div>
-    <div class="qn" id="sn">Free &mdash; 1 title option included.</div>
+    <div class="qn" id="sn">Free — 1 title option included.</div>
     <div class="qr" id="sq">
-      <button class="qb on" data-q="1" onclick="pickQty(this,'seo')">1 &mdash; Free</button>
+      <button class="qb on" data-q="1" onclick="pickQty(this,'seo')">1 — Free</button>
       <button class="qb" data-q="5" onclick="pickQty(this,'seo')">5</button>
       <button class="qb lk" data-q="10" onclick="pickQty(this,'seo')">10</button>
       <button class="qb lk" data-q="20" onclick="pickQty(this,'seo')">20</button>
@@ -354,16 +417,21 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     <div class="res" id="sr"></div>
   </div>
 
-  <!-- ═══ PLANNER ═══ -->
+  <!-- ═══ CONTENT PLANNER TAB ═══ -->
   <div id="tab-planner" class="hidden">
-    <div style="font-family:var(--fd);font-size:18px;font-weight:600;margin-bottom:.25rem">Content Planner</div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:1rem;line-height:1.5">Tell Orion about your channels and goals &mdash; get a tailored posting roadmap.</div>
+
+    <div class="section-title">Content Planner</div>
+    <div class="section-sub">Tell Orion about your channels and growth goals — get a tailored posting roadmap.</div>
+
+    <!-- Plan type selector -->
     <div class="plan-type-row">
       <button class="ptbtn on" data-pt="week" onclick="pickPlanType(this)">&#9670; Weekly Plan</button>
       <button class="ptbtn" data-pt="month" onclick="pickPlanType(this)">&#9776; Monthly Plan</button>
       <button class="ptbtn" data-pt="year" onclick="pickPlanType(this)">&#9661; Yearly Roadmap</button>
     </div>
-    <div class="qn" id="plan-lock-note" style="display:none;color:var(--red)">Monthly &amp; yearly plans require Basic or above.</div>
+    <div class="qn" id="plan-lock-note" style="display:none;color:var(--red)">Monthly &amp; yearly plans require Basic or above. Toggle your plan in the top right.</div>
+
+    <!-- Platform + followers -->
     <div class="setup" style="margin-bottom:1rem">
       <div class="fl" style="margin-bottom:12px">
         <label>Your active platforms</label>
@@ -380,8 +448,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
       </div>
       <div id="follower-inputs" style="margin-bottom:12px"></div>
       <div class="fr">
-        <div class="fl"><label>Growth goal</label><input id="growth-goal" placeholder="e.g. reach 10k YouTube subs in 3 months"/></div>
-        <div class="fl"><label>Posting frequency</label>
+        <div class="fl">
+          <label>Growth goal</label>
+          <input id="growth-goal" placeholder="e.g. reach 10k YouTube subs in 3 months"/>
+        </div>
+        <div class="fl">
+          <label>Posting frequency</label>
           <select id="post-freq">
             <option>Daily</option>
             <option selected>3x per week</option>
@@ -392,11 +464,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
         </div>
       </div>
     </div>
+
     <button class="gbtn" id="plan-btn" onclick="genPlan()">Generate Content Plan</button>
-    <div id="plan-res" style="margin-top:1.1rem"></div>
+    <div class="res" id="plan-res" style="max-height:none"></div>
   </div>
 
-  <!-- ═══ THUMBNAIL ═══ -->
+  <!-- ═══ THUMBNAIL TAB ═══ -->
   <div id="tab-thumb" class="hidden">
     <div id="tg">
       <div class="pw">
@@ -412,7 +485,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
           <line x1="24" y1="13" x2="20" y2="23" stroke="#D4AF6A" stroke-width=".8" opacity=".25"/>
         </svg>
         <div class="pwt">Thumbnail AI</div>
-        <div class="pws">Upload your thumbnail and receive a detailed AI critique &mdash; scored on contrast, text readability, emotional impact, and mobile clarity. Exclusive to Orion Premium.</div>
+        <div class="pws">Upload your thumbnail and receive a detailed AI critique — scored on contrast, text readability, emotional impact, and mobile clarity. Exclusive to Orion Premium.</div>
         <div class="pwb">
           <button class="pwu" onclick="setPlan('premium')">Unlock Premium</button>
           <button class="pwsk" onclick="showTab('ideas',document.querySelector('.tab'))">Back to Ideas</button>
@@ -422,7 +495,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     <div id="tt" class="hidden">
       <div class="dz" id="dz">
         <input type="file" id="tf" accept="image/*" onchange="loadThumb(event)"/>
-        <div style="font-size:13px;color:var(--text2);margin-bottom:4px">Drop thumbnail here or click to upload</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:4px">Drop your thumbnail here or click to upload</div>
         <div style="font-size:10px;color:var(--text3)">PNG &middot; JPG &middot; 1280x720 recommended</div>
       </div>
       <img id="tp" alt="Thumbnail preview"/>
@@ -431,19 +504,29 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     </div>
   </div>
 
-</div>
+</div><!-- /main -->
 
 <script>
-var userPlan='free',iq=1,sq=1,b64=null,planType='week';
+var userPlan='free', iq=1, sq=1, b64=null, planType='week';
 var selectedPlatforms=['YouTube'];
 var access={ideas:{free:[1],basic:[1,5,10],premium:[1,5,10,20,50]},seo:{free:[1],basic:[1,5,10],premium:[1,5,10,20]}};
 
+/* HOW TO USE */
+function toggleHow(){
+  var body=document.getElementById('how-body'),arrow=document.getElementById('how-arrow');
+  var closed=body.classList.toggle('closed');
+  arrow.classList.toggle('open',!closed);
+}
+
+/* PLAN */
 function setPlan(p){
   userPlan=p;
   document.querySelectorAll('.pb').forEach(function(b){b.classList.toggle('on',b.dataset.p===p);});
   refreshLocks('ideas');refreshLocks('seo');
-  document.getElementById('idn').textContent={free:'Free \u2014 1 idea included. Upgrade to unlock more.',basic:'Basic \u2014 up to 10 ideas.',premium:'Premium \u2014 all quantities unlocked.'}[p];
-  document.getElementById('sn').textContent={free:'Free \u2014 1 title option included.',basic:'Basic \u2014 up to 10 title options.',premium:'Premium \u2014 up to 20 title options.'}[p];
+  var notes={free:'Free — 1 idea included. Upgrade to unlock more.',basic:'Basic — up to 10 ideas.',premium:'Premium — all quantities unlocked.'};
+  document.getElementById('idn').textContent=notes[p];
+  var snotes={free:'Free — 1 title option included.',basic:'Basic — up to 10 title options.',premium:'Premium — up to 20 title options.'};
+  document.getElementById('sn').textContent=snotes[p];
   if(p==='premium'){document.getElementById('tg').classList.add('hidden');document.getElementById('tt').classList.remove('hidden');}
   else{document.getElementById('tg').classList.remove('hidden');document.getElementById('tt').classList.add('hidden');}
   updatePlanLock();
@@ -455,31 +538,33 @@ function refreshLocks(type){
   document.querySelectorAll('#'+gid+' .qb').forEach(function(b){b.classList.toggle('lk',allowed.indexOf(parseInt(b.dataset.q))===-1);});
 }
 
+/* PILLS */
 function pickPill(el){document.querySelectorAll('.pill').forEach(function(p){p.classList.remove('on');});el.classList.add('on');}
 function getPlatform(){var s=document.querySelector('.pill.on');return s?s.textContent:'YouTube';}
 
+/* QTY */
 function pickQty(btn,type){
   var q=parseInt(btn.dataset.q);
   if(access[type][userPlan].indexOf(q)===-1){alert('Upgrade your Orion plan to unlock '+q+' '+(type==='ideas'?'ideas':'titles')+'.');return;}
-  document.querySelectorAll('#'+(type==='ideas'?'iq':'sq')+' .qb').forEach(function(b){b.classList.remove('on');});
+  var gid=type==='ideas'?'iq':'sq';
+  document.querySelectorAll('#'+gid+' .qb').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
   if(type==='ideas')iq=q;else sq=q;
 }
 
+/* TABS */
 function showTab(t,el){
   ['ideas','seo','planner','thumb'].forEach(function(x){document.getElementById('tab-'+x).classList.toggle('hidden',x!==t);});
   document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});
   document.querySelector('.tab[onclick*="\''+t+'\'"]').classList.add('on');
 }
 
-function setBtn(id,loading,label){
-  var b=document.getElementById(id);b.disabled=loading;
-  b.innerHTML=loading?'<span class="sp"></span> Working...':label;
-}
-
+/* PLAN TYPE */
 function pickPlanType(btn){
   var pt=btn.dataset.pt;
-  if((pt==='month'||pt==='year')&&userPlan==='free'){alert('Monthly and yearly plans require Basic or above.');return;}
+  if((pt==='month'||pt==='year')&&userPlan==='free'){
+    alert('Monthly and yearly plans require Basic or above. Toggle your plan in the top right!');return;
+  }
   planType=pt;
   document.querySelectorAll('.ptbtn').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
@@ -487,37 +572,52 @@ function pickPlanType(btn){
 }
 
 function updatePlanLock(){
-  document.getElementById('plan-lock-note').style.display=(userPlan==='free')?'block':'none';
+  var note=document.getElementById('plan-lock-note');
+  note.style.display=(userPlan==='free')?'block':'none';
 }
 
+/* PLATFORM CHECKBOXES */
 function togglePlatCheck(cb){
   var label=cb.parentElement;
-  if(cb.checked){label.classList.add('on');if(selectedPlatforms.indexOf(cb.value)===-1)selectedPlatforms.push(cb.value);}
-  else{label.classList.remove('on');selectedPlatforms=selectedPlatforms.filter(function(p){return p!==cb.value;});}
+  if(cb.checked){
+    label.classList.add('on');
+    if(selectedPlatforms.indexOf(cb.value)===-1)selectedPlatforms.push(cb.value);
+  } else {
+    label.classList.remove('on');
+    selectedPlatforms=selectedPlatforms.filter(function(p){return p!==cb.value;});
+  }
   buildFollowerInputs();
 }
 
 function buildFollowerInputs(){
   var container=document.getElementById('follower-inputs');
-  if(!selectedPlatforms.length){container.innerHTML='';return;}
+  if(selectedPlatforms.length===0){container.innerHTML='';return;}
   var html='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">';
   selectedPlatforms.forEach(function(p){
-    var sid='fol-'+p.replace(/[^a-z0-9]/gi,'');
-    html+='<div class="fl"><label>'+p+' followers</label><input id="'+sid+'" placeholder="e.g. 1,200 or 50k"/></div>';
+    var safeId='fol-'+p.replace(/[^a-z0-9]/gi,'');
+    html+='<div class="fl"><label>'+p+' followers</label><input id="'+safeId+'" placeholder="e.g. 1,200 or 50k"/></div>';
   });
   html+='</div>';
   container.innerHTML=html;
 }
 
 function getFollowerData(){
-  var r={};
+  var result={};
   selectedPlatforms.forEach(function(p){
-    var el=document.getElementById('fol-'+p.replace(/[^a-z0-9]/gi,''));
-    if(el)r[p]=el.value.trim();
+    var safeId='fol-'+p.replace(/[^a-z0-9]/gi,'');
+    var el=document.getElementById(safeId);
+    if(el)result[p]=el.value.trim();
   });
-  return r;
+  return result;
 }
 
+/* BTN HELPER */
+function setBtn(id,loading,label){
+  var b=document.getElementById(id);b.disabled=loading;
+  b.innerHTML=loading?'<span class="sp"></span> Working...':label;
+}
+
+/* API */
 function callAPI(body,cb){
   fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
   .then(function(r){return r.json();})
@@ -525,6 +625,7 @@ function callAPI(body,cb){
   .catch(function(e){cb(e,null);});
 }
 
+/* ── IDEAS ──────────────────────────────────────────── */
 function genIdeas(){
   var niche=document.getElementById('niche').value.trim();
   if(!niche){alert('Please enter your niche first.');return;}
@@ -541,13 +642,16 @@ function renderIdeas(ideas,niche){
   var d=document.getElementById('ir');
   var html='<div class="rl">'+ideas.length+' idea'+(ideas.length>1?'s':'')+' for "'+niche+'" &mdash; click to select, click again to deselect</div>';
   ideas.forEach(function(idea,i){
-    html+='<div class="ic fade" onclick="toggleIdea(event,this,\''+encodeURIComponent(idea.title)+'\',\''+encodeURIComponent(idea.title)+'\')">'
+    html+='<div class="ic fade" onclick="toggleIdea(event,this,\''+encodeURIComponent(idea.title)+'\')" style="position:relative">'
       +'<div class="inum">'+(i+1)+'</div>'
       +'<div class="ib">'
       +'<div class="it">'+idea.title+'</div>'
       +'<div class="ih">'+idea.hook+'</div>'
-      +'<div class="chips"><span class="chip">'+idea.type+'</span><span class="chip">'+idea.difficulty+'</span><span class="chip'+(idea.potential==='Viral'?' g':'')+'">'+idea.potential+'</span></div>'
-      +'</div>'
+      +'<div class="chips">'
+      +'<span class="chip">'+idea.type+'</span>'
+      +'<span class="chip">'+idea.difficulty+'</span>'
+      +'<span class="chip'+(idea.potential==='Viral'?' g':'')+'">'+idea.potential+'</span>'
+      +'</div></div>'
       +'<div class="ic-badge">select</div>'
       +'<div class="ic-popup" onclick="event.stopPropagation()">'
       +'<div class="ic-popup-label">Use this idea?</div>'
@@ -555,7 +659,7 @@ function renderIdeas(ideas,niche){
       +'</div>'
       +'</div>';
   });
-  html+='<div class="hint">Select an idea to jump straight to SEO</div>';
+  html+='<div class="hint">Click an idea to select it &mdash; then jump to SEO</div>';
   d.innerHTML=html;
 }
 
@@ -566,10 +670,11 @@ function toggleIdea(e,el,encodedTitle){
     var badge=c.querySelector('.ic-badge');if(badge)badge.textContent='select';
     var popup=c.querySelector('.ic-popup');if(popup)popup.classList.remove('show');
   });
-  if(wasSel){document.getElementById('seo-topic').value='';}
-  else{
+  if(wasSel){
+    document.getElementById('seo-topic').value='';
+  } else {
     el.classList.add('sel');
-    var badge=el.querySelector('.ic-badge');if(badge)badge.textContent='selected \u2713';
+    var badge=el.querySelector('.ic-badge');if(badge)badge.textContent='selected ✓';
     var popup=el.querySelector('.ic-popup');if(popup)popup.classList.add('show');
     document.getElementById('seo-topic').value=decodeURIComponent(encodedTitle);
   }
@@ -585,6 +690,7 @@ function goToSEO(encodedTitle){
   });
 }
 
+/* ── SEO ────────────────────────────────────────────── */
 function genSEO(){
   var topic=document.getElementById('seo-topic').value.trim();
   if(!topic){alert('Enter a video topic or select an idea first.');return;}
@@ -611,76 +717,163 @@ function renderSEO(data,topic){
     +(data.insight?'<div class="ins">'+data.insight+'</div>':'');
 }
 
+/* ── CONTENT PLANNER ────────────────────────────────── */
 function genPlan(){
   var niche=document.getElementById('niche').value.trim();
-  if(!niche){alert('Please enter your niche in the setup panel.');return;}
-  if((planType==='month'||planType==='year')&&userPlan==='free'){alert('Monthly and yearly plans require Basic or above.');return;}
-  if(!selectedPlatforms.length){alert('Please select at least one platform.');return;}
+  if(!niche){alert('Please enter your niche in the setup panel above.');return;}
+  if((planType==='month'||planType==='year')&&userPlan==='free'){
+    alert('Monthly and yearly plans require Basic or above. Toggle your plan in the top right!');return;
+  }
+  if(selectedPlatforms.length===0){alert('Please select at least one platform.');return;}
   var followerData=getFollowerData();
   var followersStr=selectedPlatforms.map(function(p){return p+': '+(followerData[p]||'unknown');}).join(', ');
   setBtn('plan-btn',true,'Building your plan...');
   document.getElementById('plan-res').innerHTML='';
-  callAPI({type:'plan',niche:niche,subtopic:document.getElementById('sub').value.trim(),goal:document.getElementById('goal').value.trim(),platform:getPlatform(),platforms:selectedPlatforms,followers:followersStr,growthGoal:document.getElementById('growth-goal').value.trim(),planType:planType},function(err,data){
+  callAPI({
+    type:'plan',
+    niche:niche,
+    subtopic:document.getElementById('sub').value.trim(),
+    goal:document.getElementById('goal').value.trim(),
+    platform:getPlatform(),
+    platforms:selectedPlatforms,
+    followers:followersStr,
+    growthGoal:document.getElementById('growth-goal').value.trim(),
+    planType:planType
+  },function(err,data){
     if(err){document.getElementById('plan-res').innerHTML='<div class="err">Error: '+err.message+'</div>';}
-    else{if(planType==='week')renderWeekPlan(data);else if(planType==='month')renderMonthPlan(data);else renderYearPlan(data);}
+    else{
+      if(planType==='week')renderWeekPlan(data);
+      else if(planType==='month')renderMonthPlan(data);
+      else renderYearPlan(data);
+    }
     setBtn('plan-btn',false,'Generate Content Plan');
   });
 }
 
 function renderWeekPlan(data){
   var d=document.getElementById('plan-res');
-  var html='<hr class="divr"/><div class="plan-summary fade"><div class="plan-summary-title">Your 7-Day Content Plan</div><div class="plan-summary-sub">'+(data.summary||'')+'</div>'
-    +(data.weeklyTheme?'<div style="font-size:11px;color:var(--text3);margin-top:.5rem;text-transform:uppercase;letter-spacing:1px">Theme</div><div style="font-size:13px;color:var(--gold2);font-family:var(--fd);margin-top:2px">'+data.weeklyTheme+'</div>':'')
+  var html='<hr class="divr"/>'
+    +'<div class="plan-summary fade">'
+    +'<div class="plan-summary-title">Your 7-Day Content Plan</div>'
+    +'<div class="plan-summary-sub">'+(data.summary||'')+'</div>'
+    +(data.weeklyTheme?'<div style="margin-top:.5rem;font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase">Theme</div><div style="font-size:13px;color:var(--gold2);font-family:var(--fd);margin-top:2px">'+data.weeklyTheme+'</div>':'')
     +(data.weeklyGoal?'<div class="plan-goal-badge">Goal: '+data.weeklyGoal+'</div>':'')
     +'</div>';
   (data.days||[]).forEach(function(day){
-    html+='<div class="day-card fade"><div class="day-header"><div class="day-label">'+day.day+'</div><div style="display:flex;gap:6px;align-items:center">'+(day.bestTime?'<div class="day-meta-item">'+day.bestTime+'</div>':'')+'<div class="day-platform">'+day.platform+'</div></div></div>'
-      +'<div class="day-title">'+day.title+'</div><div class="day-hook">'+day.hook+'</div>'
+    html+='<div class="day-card fade">'
+      +'<div class="day-header">'
+      +'<div class="day-label">'+day.day+'</div>'
+      +'<div style="display:flex;gap:6px;align-items:center">'
+      +(day.bestTime?'<div class="day-meta-item">'+day.bestTime+'</div>':'')
+      +'<div class="day-platform">'+day.platform+'</div>'
+      +'</div></div>'
+      +'<div class="day-title">'+day.title+'</div>'
+      +'<div class="day-hook">'+day.hook+'</div>'
       +'<div class="day-meta"><span class="day-meta-item">'+day.contentType+'</span></div>'
       +(day.tip?'<div class="day-tip">'+day.tip+'</div>':'')
       +'</div>';
   });
-  if(data.growthTips&&data.growthTips.length){html+='<div class="rl" style="margin-top:1rem">Growth tips</div><div class="tips-row">';data.growthTips.forEach(function(tip,i){html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';});html+='</div>';}
+  if(data.growthTips&&data.growthTips.length){
+    html+='<div class="rl" style="margin-top:1rem">Growth tips for this week</div><div class="tips-row">';
+    data.growthTips.forEach(function(tip,i){
+      html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';
+    });
+    html+='</div>';
+  }
   d.innerHTML=html;
 }
 
 function renderMonthPlan(data){
   var d=document.getElementById('plan-res');
-  var html='<hr class="divr"/><div class="plan-summary fade"><div class="plan-summary-title">Your 30-Day Content Plan</div><div class="plan-summary-sub">'+(data.summary||'')+'</div>'+(data.monthlyGoal?'<div class="plan-goal-badge">Goal: '+data.monthlyGoal+'</div>':'')+'</div>';
+  var html='<hr class="divr"/>'
+    +'<div class="plan-summary fade">'
+    +'<div class="plan-summary-title">Your 30-Day Content Plan</div>'
+    +'<div class="plan-summary-sub">'+(data.summary||'')+'</div>'
+    +(data.monthlyGoal?'<div class="plan-goal-badge">Goal: '+data.monthlyGoal+'</div>':'')
+    +'</div>';
   (data.weeks||[]).forEach(function(week){
-    html+='<div class="week-card fade"><div class="week-header"><div class="week-label">Week '+week.week+'</div>'+(week.theme?'<div class="week-theme">'+week.theme+'</div>':'')+'</div>'
+    html+='<div class="week-card fade">'
+      +'<div class="week-header">'
+      +'<div class="week-label">Week '+week.week+'</div>'
+      +(week.theme?'<div class="week-theme">'+week.theme+'</div>':'')
+      +'</div>'
       +(week.focus?'<div style="font-size:12px;color:var(--text2);margin-bottom:.6rem">'+week.focus+'</div>':'')
       +'<div class="week-posts">';
-    (week.posts||[]).forEach(function(post){html+='<div class="week-post"><span class="week-post-plat">'+post.platform+'</span><span style="color:var(--text3);font-size:10px">'+post.dayOfWeek+'</span><span style="flex:1">'+post.title+'</span><span style="font-size:9px;color:var(--text3)">'+post.contentType+'</span></div>';});
-    html+='</div>'+(week.milestone?'<div class="week-milestone">&#10003; '+week.milestone+'</div>':'')+'</div>';
+    (week.posts||[]).forEach(function(post){
+      html+='<div class="week-post">'
+        +'<span class="week-post-plat">'+post.platform+'</span>'
+        +'<span style="color:var(--text3);font-size:10px">'+post.dayOfWeek+'</span>'
+        +'<span style="flex:1">'+post.title+'</span>'
+        +'<span style="font-size:9px;color:var(--text3)">'+post.contentType+'</span>'
+        +'</div>';
+    });
+    html+='</div>'
+      +(week.milestone?'<div class="week-milestone">&#10003; '+week.milestone+'</div>':'')
+      +'</div>';
   });
-  if(data.contentPillars&&data.contentPillars.length){html+='<div class="rl" style="margin-top:1rem">Content pillars</div><div class="pillars-row">';data.contentPillars.forEach(function(p){html+='<div class="pillar">'+p+'</div>';});html+='</div>';}
-  if(data.growthTips&&data.growthTips.length){html+='<div class="rl" style="margin-top:1rem">Growth strategies</div><div class="tips-row">';data.growthTips.forEach(function(tip,i){html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';});html+='</div>';}
+  if(data.contentPillars&&data.contentPillars.length){
+    html+='<div class="rl" style="margin-top:1rem">Content pillars</div><div class="pillars-row">';
+    data.contentPillars.forEach(function(p){html+='<div class="pillar">'+p+'</div>';});
+    html+='</div>';
+  }
+  if(data.growthTips&&data.growthTips.length){
+    html+='<div class="rl" style="margin-top:1rem">Monthly growth strategies</div><div class="tips-row">';
+    data.growthTips.forEach(function(tip,i){
+      html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';
+    });
+    html+='</div>';
+  }
   d.innerHTML=html;
 }
 
 function renderYearPlan(data){
   var d=document.getElementById('plan-res');
-  var html='<hr class="divr"/><div class="plan-summary fade"><div class="plan-summary-title">Your 12-Month Roadmap</div><div class="plan-summary-sub">'+(data.summary||'')+'</div>'+(data.yearlyGoal?'<div class="plan-goal-badge">Goal: '+data.yearlyGoal+'</div>':'')+'</div>';
+  var html='<hr class="divr"/>'
+    +'<div class="plan-summary fade">'
+    +'<div class="plan-summary-title">Your 12-Month Roadmap</div>'
+    +'<div class="plan-summary-sub">'+(data.summary||'')+'</div>'
+    +(data.yearlyGoal?'<div class="plan-goal-badge">Goal: '+data.yearlyGoal+'</div>':'')
+    +'</div>';
   (data.quarters||[]).forEach(function(q){
-    html+='<div class="quarter-card fade"><div class="q-header"><div class="q-badge">'+q.quarter+'</div><div class="q-info"><div class="q-theme">'+q.theme+'</div><div class="q-months">'+q.months+'</div></div></div>'
+    html+='<div class="quarter-card fade">'
+      +'<div class="q-header">'
+      +'<div class="q-badge">'+q.quarter+'</div>'
+      +'<div class="q-info">'
+      +'<div class="q-theme">'+q.theme+'</div>'
+      +'<div class="q-months">'+q.months+'</div>'
+      +'</div></div>'
       +(q.focus?'<div class="q-focus">'+q.focus+'</div>':'')
       +'<div class="q-content">';
     (q.keyContent||[]).forEach(function(c){html+='<div class="q-content-item">'+c+'</div>';});
-    html+='</div>'+(q.milestone?'<div class="q-milestone">'+q.milestone+'</div>':'')+'</div>';
+    html+='</div>'
+      +(q.milestone?'<div class="q-milestone">'+q.milestone+'</div>':'')
+      +(q.platforms&&q.platforms.length?'<div style="display:flex;gap:5px;margin-top:.5rem;flex-wrap:wrap">'+q.platforms.map(function(p){return '<span class="day-meta-item">'+p+'</span>';}).join('')+'</div>':'')
+      +'</div>';
   });
-  if(data.brandEvolution){html+='<div class="rl" style="margin-top:1rem">Brand evolution</div><div class="brand-box">'+data.brandEvolution+'</div>';}
-  if(data.monetizationPath){html+='<div class="rl" style="margin-top:1rem">Monetization path</div><div class="monetize-box">'+data.monetizationPath+'</div>';}
-  if(data.growthTips&&data.growthTips.length){html+='<div class="rl" style="margin-top:1rem">Yearly strategies</div><div class="tips-row">';data.growthTips.forEach(function(tip,i){html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';});html+='</div>';}
+  if(data.brandEvolution){
+    html+='<div class="rl" style="margin-top:1rem">Brand evolution</div><div class="brand-box">'+data.brandEvolution+'</div>';
+  }
+  if(data.monetizationPath){
+    html+='<div class="rl" style="margin-top:1rem">Monetization path</div><div class="monetize-box">'+data.monetizationPath+'</div>';
+  }
+  if(data.growthTips&&data.growthTips.length){
+    html+='<div class="rl" style="margin-top:1rem">Yearly growth strategies</div><div class="tips-row">';
+    data.growthTips.forEach(function(tip,i){
+      html+='<div class="tip-card fade"><div class="tip-num">'+(i+1)+'</div><div class="tip-text">'+tip+'</div></div>';
+    });
+    html+='</div>';
+  }
   d.innerHTML=html;
 }
 
+/* ── THUMBNAIL ──────────────────────────────────────── */
 function loadThumb(e){
   var file=e.target.files[0];if(!file)return;
   var reader=new FileReader();
   reader.onload=function(ev){
     var src=ev.target.result;
-    document.getElementById('tp').src=src;document.getElementById('tp').style.display='block';
+    document.getElementById('tp').src=src;
+    document.getElementById('tp').style.display='block';
     b64=src.split(',')[1];
     document.getElementById('thb').disabled=false;
     document.getElementById('dz').style.display='none';
@@ -702,18 +895,23 @@ function analyzeThumb(){
 function renderThumb(data){
   var d=document.getElementById('tr');
   var metrics=[['Text readability',data.textReadability],['Visual contrast',data.visualContrast],['Emotional impact',data.emotionalImpact],['Mobile clarity',data.mobileClarity]];
-  var mcards='';metrics.forEach(function(m){var v=m[1]||0;mcards+='<div class="sc"><div class="scl">'+m[0]+'</div><div class="scv">'+v+'</div><div class="bg"><div class="bf" style="width:'+v+'%;opacity:'+(v>=75?1:v>=50?.7:.4)+'"></div></div></div>';});
-  var strengths='';(data.strengths||[]).forEach(function(s){strengths+='<div class="fc good"><div class="fcl">Strength</div><div class="fct"><strong>'+s.point+'</strong> \u2014 '+s.impact+'</div></div>';});
-  var improvements='';(data.improvements||[]).forEach(function(s){improvements+='<div class="fc '+(s.priority==='High'?'bad':'warn')+'"><div class="fcl">'+s.priority+' priority</div><div class="fct"><strong>'+s.issue+'</strong><br/>'+s.fix+'</div></div>';});
-  d.innerHTML='<hr class="divr"/><div class="ss"><div class="sb2"><div class="sn">'+(data.score||0)+'</div><div class="sl">Score</div></div><div class="st">'+(data.summary||'')+'</div></div><div class="sg">'+mcards+'</div>'+strengths+improvements;
+  var mcards='';
+  metrics.forEach(function(m){var v=m[1]||0;mcards+='<div class="sc"><div class="scl">'+m[0]+'</div><div class="scv">'+v+'</div><div class="bg"><div class="bf" style="width:'+v+'%;opacity:'+(v>=75?1:v>=50?.7:.4)+'"></div></div></div>';});
+  var strengths='';
+  (data.strengths||[]).forEach(function(s){strengths+='<div class="fc good"><div class="fcl">Strength</div><div class="fct"><strong>'+s.point+'</strong> — '+s.impact+'</div></div>';});
+  var improvements='';
+  (data.improvements||[]).forEach(function(s){improvements+='<div class="fc '+(s.priority==='High'?'bad':'warn')+'"><div class="fcl">'+s.priority+' priority</div><div class="fct"><strong>'+s.issue+'</strong><br/>'+s.fix+'</div></div>';});
+  d.innerHTML='<hr class="divr"/><div class="ss"><div class="sb2"><div class="sn">'+(data.score||0)+'</div><div class="sl2">Score</div></div><div class="st">'+(data.summary||'')+'</div></div><div class="sg">'+mcards+'</div>'+strengths+improvements;
 }
 
+/* ── UTILS ──────────────────────────────────────────── */
 function cp(el,encoded){
   navigator.clipboard.writeText(decodeURIComponent(encoded)).then(function(){
     var o=el.textContent;el.textContent='Copied';setTimeout(function(){el.textContent=o;},1100);
   });
 }
 
+/* INIT */
 buildFollowerInputs();
 </script>
 </body>
