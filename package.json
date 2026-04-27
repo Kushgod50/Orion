@@ -1,8 +1,49 @@
-{
-  "name": "orion-creator-studio",
-  "version": "2.0.0",
-  "description": "Orion — Built for creators who mean it.",
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.24.0"
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Orion — Welcome aboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0C0C0C;--surface:#1A1A1A;--card:#222;
+  --gold:#D4AF6A;--gold2:#F0D99A;
+  --gdim:rgba(212,175,106,0.1);--gdim2:rgba(212,175,106,0.06);
+  --text:#F5F5F5;--text2:rgba(245,245,245,0.55);--text3:rgba(245,245,245,0.28);
+  --bor:rgba(212,175,106,0.13);--green:#52B788;
+  --fd:'Cormorant Garamond',serif;--fb:'DM Sans',sans-serif;
 }
+body{background:var(--void);color:var(--text);font-family:var(--fb);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+.card{background:var(--surface);border:1px solid var(--bor);border-radius:16px;padding:2.5rem;max-width:460px;width:100%;text-align:center}
+.icon{width:56px;height:56px;border-radius:50%;background:rgba(82,183,136,0.12);border:1px solid rgba(82,183,136,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:22px;color:var(--green)}
+.title{font-family:var(--fd);font-size:28px;font-weight:600;color:var(--gold2);margin-bottom:.4rem}
+.subtitle{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1.75rem}
+.what-next{background:var(--card);border-radius:10px;padding:1.1rem;margin-bottom:1.75rem;text-align:left}
+.what-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:.75rem;font-weight:500}
+.what-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text2);margin-bottom:.6rem;line-height:1.5}
+.what-item:last-child{margin-bottom:0}
+.what-num{min-width:20px;height:20px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold);flex-shrink:0;margin-top:1px}
+.cta{display:block;width:100%;padding:13px;border-radius:10px;background:var(--gold);color:var(--void);font-size:14px;font-weight:500;border:none;cursor:pointer;font-family:var(--fd);letter-spacing:.5px;text-decoration:none;margin-bottom:.75rem;transition:opacity .15s}
+.cta:hover{opacity:.88}
+.note{font-size:11px;color:var(--text3);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">&#10003;</div>
+  <div class="title">You're in.</div>
+  <div class="subtitle">Your Orion subscription is active. Welcome to the creator studio built for people who mean it.</div>
+  <div class="what-next">
+    <div class="what-label">What to do next</div>
+    <div class="what-item"><div class="what-num">1</div>Enter your niche in the setup panel</div>
+    <div class="what-item"><div class="what-num">2</div>Generate your first batch of video ideas</div>
+    <div class="what-item"><div class="what-num">3</div>Pick an idea and run the SEO package</div>
+    <div class="what-item"><div class="what-num">4</div>Build your content plan for the month</div>
+  </div>
+  <a class="cta" href="/index.html">Open Orion &#8594;</a>
+  <div class="note">A receipt has been sent to your email by Stripe. Questions? Reply to that email and we'll sort it.</div>
+</div>
+</body>
+</html>
