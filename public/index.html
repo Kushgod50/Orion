@@ -18,10 +18,15 @@
 }
 body{background:var(--void);color:var(--text);font-family:var(--fb);min-height:100vh}
 nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;border-bottom:1px solid var(--bor);position:sticky;top:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(16px);z-index:100}
-.logo{display:flex;align-items:center;gap:10px}
-.lw{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:.5px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lw{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:.5px;color:var(--text)}
 .lw span{color:var(--gold)}
 .lt{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-top:2px}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-link{font-size:12px;color:var(--text2);text-decoration:none;padding:5px 10px;border-radius:20px;transition:all .15s}
+.nav-link:hover{color:var(--text)}
+.nav-upgrade{font-size:12px;font-weight:500;padding:6px 16px;border-radius:20px;background:var(--gold);color:var(--void);text-decoration:none;font-family:var(--fd);letter-spacing:.3px;transition:opacity .15s;border:none;cursor:pointer}
+.nav-upgrade:hover{opacity:.88}
 .pr{display:flex;gap:5px}
 .pb{font-size:10px;padding:4px 13px;border-radius:20px;border:1px solid var(--bor);color:var(--text2);background:none;cursor:pointer;font-family:var(--fb);transition:all .2s}
 .pb.on{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
@@ -193,6 +198,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .err{color:var(--red);font-size:12px;padding:.6rem .9rem;background:rgba(232,112,95,.06);border-radius:var(--r);border:1px solid rgba(232,112,95,.2);line-height:1.5;margin-top:.75rem}
 .fade{animation:fi .3s ease}
 @keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.upgrade-cta{background:var(--gdim2);border:1px solid var(--bor);border-radius:var(--rl);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.upgrade-cta-title{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--gold2);margin-bottom:.25rem}
+.upgrade-cta-sub{font-size:12px;color:var(--text2);line-height:1.6}
+.upgrade-cta-btns{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.ucta-btn{padding:9px 22px;border-radius:var(--r);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--fd);letter-spacing:.3px;text-decoration:none;white-space:nowrap;transition:opacity .15s;display:inline-block}
+.ucta-btn.gold{background:var(--gold);color:var(--void);border:none}
+.ucta-btn.gold:hover{opacity:.88}
+.ucta-btn.ghost{background:none;border:1px solid var(--bor2);color:var(--text2)}
+.ucta-btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
 </style>
 </head>
 <body>
@@ -215,10 +229,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
       <div class="lt">Built for creators who mean it.</div>
     </div>
   </div>
-  <div class="pr">
-    <button class="pb on" data-p="free" onclick="setPlan('free')">Free</button>
-    <button class="pb" data-p="basic" onclick="setPlan('basic')">Basic</button>
-    <button class="pb" data-p="premium" onclick="setPlan('premium')">Premium</button>
+  <div class="nav-right">
+    <a href="/pricing.html" class="nav-link">Pricing</a>
+    <div class="pr" style="margin-left:4px">
+      <button class="pb on" data-p="free" onclick="setPlan('free')">Free</button>
+      <button class="pb" data-p="basic" onclick="setPlan('basic')">Basic</button>
+      <button class="pb" data-p="premium" onclick="setPlan('premium')">Premium</button>
+    </div>
+    <a href="/pricing.html" class="nav-upgrade">Upgrade &#10022;</a>
   </div>
 </nav>
 
@@ -227,6 +245,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
   <div class="ic-popup-label">Use this idea?</div>
   <button class="ic-popup-btn" id="popup-seo-btn">&#8593; Open in SEO &amp; Tags</button>
   <div class="ic-popup-close" onclick="closePopup()">&#215; close</div>
+</div>
+
+<!-- UPGRADE BANNER — shown to free users -->
+<div id="upgrade-banner" style="background:var(--gdim2);border-bottom:1px solid var(--bor);padding:.6rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:12px">
+  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)">
+    <span style="color:var(--gold);font-size:12px">&#10022;</span>
+    <span>You're on the <strong style="color:var(--text)">Free plan</strong> &mdash; 3 generations per day. Unlock more with Basic or Premium.</span>
+  </div>
+  <a href="/pricing.html" style="font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;background:var(--gold);color:var(--void);text-decoration:none;white-space:nowrap;font-family:var(--fd);letter-spacing:.3px;flex-shrink:0;transition:opacity .15s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">See plans &#8594;</a>
 </div>
 
 <div class="main">
@@ -432,6 +459,18 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
     </div>
   </div>
 
+  <!-- UPGRADE CTA -->
+  <div class="upgrade-cta" id="upgrade-cta-block">
+    <div class="upgrade-cta-left">
+      <div class="upgrade-cta-title">Ready to unlock the full studio?</div>
+      <div class="upgrade-cta-sub">Basic gets you 50 generations/month, monthly plans, and PDF downloads.<br/>Premium adds the yearly roadmap, Thumbnail AI, and 200 generations.</div>
+    </div>
+    <div class="upgrade-cta-btns">
+      <a href="/pricing.html" class="ucta-btn ghost">See all plans</a>
+      <a href="/pricing.html" class="ucta-btn gold">Upgrade now &#10022;</a>
+    </div>
+  </div>
+
 </div><!-- /main -->
 
 <script>
@@ -450,6 +489,18 @@ function setPlan(p){
   if(p==='premium'){document.getElementById('tg').classList.add('hidden');document.getElementById('tt').classList.remove('hidden');}
   else{document.getElementById('tg').classList.remove('hidden');document.getElementById('tt').classList.add('hidden');}
   updatePlanBtns();
+  // Show/hide upgrade banner and CTA block
+  var banner=document.getElementById('upgrade-banner');
+  if(banner)banner.style.display=p==='free'?'flex':'none';
+  var ctaBlock=document.getElementById('upgrade-cta-block');
+  if(ctaBlock)ctaBlock.style.display=p==='premium'?'none':'flex';
+  // Update nav upgrade button text
+  var upBtn=document.querySelector('.nav-upgrade');
+  if(upBtn){
+    if(p==='free')upBtn.textContent='Upgrade \u2736';
+    else if(p==='basic')upBtn.textContent='Go Premium \u2736';
+    else upBtn.textContent='Manage plan';
+  }
 }
 
 function refreshLocks(type){
@@ -470,7 +521,12 @@ function getPlatform(){var s=document.querySelector('.pill.on');return s?s.textC
 
 function pickQty(btn,type){
   var q=parseInt(btn.dataset.q);
-  if(access[type][userPlan].indexOf(q)===-1){alert('Upgrade your Orion plan to unlock '+q+' '+(type==='ideas'?'ideas':'titles')+'.');return;}
+  if(access[type][userPlan].indexOf(q)===-1){
+    if(confirm('Upgrade your Orion plan to unlock '+q+' '+(type==='ideas'?'ideas':'titles')+'. Go to pricing page?')){
+      window.location='/pricing.html';
+    }
+    return;
+  }
   document.querySelectorAll('#'+(type==='ideas'?'iq':'sq')+' .qb').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
   if(type==='ideas')iq=q;else sq=q;
@@ -490,8 +546,14 @@ function setBtn(id,loading,label){
 
 function pickPlanType(btn){
   var pt=btn.dataset.pt;
-  if(pt==='month'&&userPlan==='free'){alert('Monthly plans require Basic or above. Toggle your plan in the top right!');return;}
-  if(pt==='year'&&userPlan!=='premium'){alert('Yearly roadmaps are Premium only. Toggle your plan in the top right!');return;}
+  if(pt==='month'&&userPlan==='free'){
+    if(confirm('Monthly plans require Basic or above. Go to pricing?')){window.location='/pricing.html';}
+    return;
+  }
+  if(pt==='year'&&userPlan!=='premium'){
+    if(confirm('Yearly roadmaps are Premium only. Go to pricing?')){window.location='/pricing.html';}
+    return;
+  }
   planType=pt;
   document.querySelectorAll('.ptbtn').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
