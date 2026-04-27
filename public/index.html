@@ -260,73 +260,91 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 
   <!-- INSTRUCTIONS -->
   <div style="margin-bottom:2rem">
-    <div style="font-family:var(--fd);font-size:24px;font-weight:600;color:var(--gold2);margin-bottom:.2rem;letter-spacing:.3px">How to use Orion</div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:1.25rem">Your AI-powered creator studio &mdash; ideas, SEO, content planning, and thumbnail feedback all in one place.</div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.1rem">
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">1</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Enter your niche</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Fill in the setup panel below. Be specific &mdash; "home workouts for busy moms" gets far better results than just "fitness". Add your platform and goals too.</div>
+    <!-- HEADER ROW — always visible, click to toggle -->
+    <div onclick="toggleInstructions()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:.85rem 1.1rem;background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);transition:background .15s;user-select:none" onmouseover="this.style.background='var(--card)'" onmouseout="this.style.background='var(--surface)'">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="color:var(--gold);font-size:14px">&#9670;</span>
+        <div>
+          <div style="font-family:var(--fd);font-size:16px;font-weight:600;color:var(--text);letter-spacing:.2px">How to use Orion</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:1px">AI-powered ideas, SEO, content planning &amp; thumbnail feedback</div>
+        </div>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">2</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Pick a tab &amp; generate</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Choose Video Ideas, SEO &amp; Tags, Content Planner, or Thumbnail AI. Hit the gold Generate button and Orion calls the AI instantly.</div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
-        <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">3</div>
-        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Copy &amp; publish</div>
-        <div style="font-size:11px;color:var(--text2);line-height:1.65">Click any title, description, or tag to copy it instantly. Paste directly into YouTube Studio, TikTok, or wherever you publish. Download your plan as a PDF.</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span id="instr-label" style="font-size:10px;color:var(--text3);letter-spacing:.5px">EXPAND</span>
+        <div id="instr-arrow" style="width:24px;height:24px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);transition:transform .25s">&#8964;</div>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem">
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#10022;</div>
-        <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Video Ideas</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Generate ideas, click a card to select it, and a popup appears with a shortcut to the SEO tab. Click again to deselect.</div></div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#8593;</div>
-        <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">SEO &amp; Tags</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Get optimised titles, a 150-200 word description, and 15 tags. Click any item to copy it to clipboard instantly.</div></div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9776;</div>
-        <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Content Planner</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Add your platforms, follower counts, and growth goal. Orion sets your ideal posting frequency and builds a full roadmap with video ideas per period. Download as PDF.</div></div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
-        <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9670;</div>
-        <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Thumbnail AI &mdash; Premium</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Upload your thumbnail. Get scored on contrast, readability, emotional impact, and mobile clarity. Every weakness gets a specific fix.</div></div>
-      </div>
-    </div>
+    <!-- COLLAPSIBLE BODY -->
+    <div id="instr-body" style="display:none;border:1px solid var(--bor);border-top:none;border-radius:0 0 var(--r) var(--r);background:var(--surface);padding:1.25rem 1.1rem">
 
-    <div style="background:var(--surface);border:1px solid var(--bor);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.1rem">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:10px;font-weight:500">Pro tips</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Ideas &rarr; SEO shortcut.</strong> Click an idea card, then hit "Open in SEO". The title auto-fills so you generate the full package in one click.</span></div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Titles under 60 chars.</strong> YouTube cuts off longer titles in search. The character count next to each title helps you pick the right one.</span></div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Real follower counts matter.</strong> Even if small. The planner calibrates to where you are now, not where you want to be.</span></div>
-        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Click periods to expand.</strong> In the Content Planner, each week/month/quarter is clickable and shows the video ideas for that period.</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.1rem">
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
+          <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">1</div>
+          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Enter your niche</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.65">Fill in the setup panel below. Be specific &mdash; "home workouts for busy moms" gets far better results than just "fitness". Add your platform and goals too.</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
+          <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">2</div>
+          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Pick a tab &amp; generate</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.65">Choose Video Ideas, SEO &amp; Tags, Content Planner, or Thumbnail AI. Hit the gold Generate button and Orion calls the AI instantly.</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:1rem">
+          <div style="font-family:var(--fd);font-size:24px;color:var(--gold);line-height:1;margin-bottom:7px">3</div>
+          <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px">Copy &amp; publish</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.65">Click any title, description, or tag to copy it instantly. Paste directly into YouTube Studio, TikTok, or wherever you publish. Download your plan as a PDF.</div>
+        </div>
       </div>
-    </div>
 
-    <table style="width:100%;border-collapse:collapse;font-size:11px;background:var(--surface);border-radius:var(--r);border:1px solid var(--bor);overflow:hidden">
-      <thead><tr style="border-bottom:1px solid var(--bor)">
-        <th style="text-align:left;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Feature</th>
-        <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Free</th>
-        <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Basic</th>
-        <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Premium</th>
-      </tr></thead>
-      <tbody>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Video ideas</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 50</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">SEO title options</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 20</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Description &amp; tags</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; weekly</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; monthly + PDF</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; yearly roadmap + PDF</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-        <tr><td style="padding:7px 12px;color:var(--text2)">Thumbnail AI</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
-      </tbody>
-    </table>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem">
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
+          <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#10022;</div>
+          <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Video Ideas</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Generate ideas, click a card to select it, and a popup appears with a shortcut to the SEO tab. Click again to deselect.</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
+          <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#8593;</div>
+          <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">SEO &amp; Tags</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Get optimised titles, a 150-200 word description, and 15 tags. Click any item to copy it to clipboard instantly.</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
+          <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9776;</div>
+          <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Content Planner</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Add your platforms, follower counts, and growth goal. Orion sets your ideal posting frequency and builds a full roadmap with video ideas per period. Download as PDF.</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:10px">
+          <div style="min-width:30px;height:30px;border-radius:50%;background:var(--gdim);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:13px">&#9670;</div>
+          <div><div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;font-family:var(--fd)">Thumbnail AI &mdash; Premium</div><div style="font-size:11px;color:var(--text2);line-height:1.65">Upload your thumbnail. Get scored on contrast, readability, emotional impact, and mobile clarity. Every weakness gets a specific fix.</div></div>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--bor);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.1rem">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:10px;font-weight:500">Pro tips</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Ideas &rarr; SEO shortcut.</strong> Click an idea card, then hit "Open in SEO". The title auto-fills so you generate the full package in one click.</span></div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Titles under 60 chars.</strong> YouTube cuts off longer titles in search. The character count next to each title helps you pick the right one.</span></div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Real follower counts matter.</strong> Even if small. The planner calibrates to where you are now, not where you want to be.</span></div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.65"><span style="color:var(--gold);flex-shrink:0;margin-top:2px">&#10022;</span><span><strong style="color:var(--text);font-weight:500">Click periods to expand.</strong> In the Content Planner, each week/month/quarter is clickable and shows the video ideas for that period.</span></div>
+        </div>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;font-size:11px;background:var(--card);border-radius:var(--r);border:1px solid var(--bor);overflow:hidden">
+        <thead><tr style="border-bottom:1px solid var(--bor)">
+          <th style="text-align:left;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Feature</th>
+          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Free</th>
+          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Basic</th>
+          <th style="text-align:center;color:var(--text3);font-weight:500;padding:8px 12px;font-size:9px;letter-spacing:.5px;text-transform:uppercase">Premium</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Video ideas</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 50</td></tr>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">SEO title options</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">1</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 10</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">Up to 20</td></tr>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Description &amp; tags</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; weekly</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; monthly + PDF</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
+          <tr style="border-bottom:1px solid rgba(212,175,106,0.06)"><td style="padding:7px 12px;color:var(--text2)">Content planner &mdash; yearly + PDF</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
+          <tr><td style="padding:7px 12px;color:var(--text2)">Thumbnail AI</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--text3)">&#8212;</td><td style="text-align:center;padding:7px 12px;color:var(--gold)">&#10003;</td></tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 
   <!-- SETUP -->
@@ -994,6 +1012,30 @@ function cp(el,encoded){
 /* INIT */
 buildFollowerInputs();
 updatePlanBtns();
+
+function toggleInstructions(){
+  var body=document.getElementById('instr-body');
+  var arrow=document.getElementById('instr-arrow');
+  var label=document.getElementById('instr-label');
+  var open=body.style.display==='block';
+  body.style.display=open?'none':'block';
+  arrow.style.transform=open?'rotate(0deg)':'rotate(180deg)';
+  label.textContent=open?'EXPAND':'COLLAPSE';
+  // Remember preference
+  try{localStorage.setItem('orion-instr',open?'closed':'open');}catch(e){}
+}
+
+// Restore last state
+(function(){
+  try{
+    var saved=localStorage.getItem('orion-instr');
+    if(saved==='open'){
+      document.getElementById('instr-body').style.display='block';
+      document.getElementById('instr-arrow').style.transform='rotate(180deg)';
+      document.getElementById('instr-label').textContent='COLLAPSE';
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
